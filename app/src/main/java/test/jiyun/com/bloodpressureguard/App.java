@@ -10,5 +10,6 @@ import test.jiyun.com.bloodpressureguard.base.BaseActivity;
  */
 
 public class App extends Application{
-    public static BaseActivity activity;
+    public static BaseActivity baseActivity;
+    public static Activity activity;
 }
