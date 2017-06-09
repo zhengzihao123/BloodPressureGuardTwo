@@ -1,5 +1,6 @@
 package test.jiyun.com.bloodpressureguard;
 
+import android.app.Activity;
 import android.app.Application;
 
 import test.jiyun.com.bloodpressureguard.base.BaseActivity;
@@ -9,5 +10,5 @@ import test.jiyun.com.bloodpressureguard.base.BaseActivity;
  */
 
 public class App extends Application{
-    public static BaseActivity baseActivity;
+    public static BaseActivity activity;
 }
