@@ -1,7 +1,9 @@
-package test.jiyun.com.bloodpressureguard;
+package test.jiyun.com.bloodpressureguard.activity;
 
 import android.app.Activity;
 import android.os.Bundle;
+
+import test.jiyun.com.bloodpressureguard.R;
 
 public class MainActivity extends Activity {
 
