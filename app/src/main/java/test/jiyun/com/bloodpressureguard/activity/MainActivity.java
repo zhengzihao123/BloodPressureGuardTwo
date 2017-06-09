@@ -96,7 +96,7 @@ public class MainActivity extends BaseActivity {
         getController(0);
     }
 
-    /*下方按钮的自定义选择器*/
+    /*下方按钮的 自定义选择器 */
     public void getController(int shu) {
         switch (shu) {
             case 0:
