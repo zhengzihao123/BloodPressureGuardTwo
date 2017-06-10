@@ -11,17 +11,15 @@ import butterknife.ButterKnife;
 
 
 public abstract class BaseFragment extends Fragment {
-   private View view;
+    private View view;
+
     @Nullable
     @Override
     public View onCreateView(LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
-     view=inflater.inflate(ViewID(), container, false);
+        view = inflater.inflate(ViewID(), container, false);
         return view;
+    }
 
-    }
-     public View getFragmentView(){
-        return view;
-    }
     @Override
     public void onViewCreated(View view, @Nullable Bundle savedInstanceState) {
         super.onViewCreated(view, savedInstanceState);
@@ -55,7 +53,10 @@ public abstract class BaseFragment extends Fragment {
     /**
      * 初始化控件
      */
-    public  void  initView(View view){};
+    public void initView(View view) {
+    }
+
+    ;
 
 
     //初始化组件
@@ -71,9 +72,9 @@ public abstract class BaseFragment extends Fragment {
     public void updateTitleBar() {
     }
 
-   protected  void onShow(){
+    protected void onShow() {
 
-   }
+    }
 
     //页面隐藏时调用
     protected void onHidden() {

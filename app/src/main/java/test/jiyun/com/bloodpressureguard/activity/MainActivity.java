@@ -7,6 +7,7 @@ import android.support.v4.widget.DrawerLayout;
 import android.util.Log;
 import android.view.Gravity;
 import android.view.View;
+import android.widget.FrameLayout;
 import android.widget.ImageView;
 import android.widget.LinearLayout;
 import android.widget.TextView;
@@ -15,9 +16,12 @@ import java.util.ArrayList;
 import java.util.List;
 
 import butterknife.Bind;
+import butterknife.ButterKnife;
 import butterknife.OnClick;
 import test.jiyun.com.bloodpressureguard.R;
 import test.jiyun.com.bloodpressureguard.base.BaseActivity;
+import test.jiyun.com.bloodpressureguard.fragment.BloodPressureFragment;
+import test.jiyun.com.bloodpressureguard.model.budler.FragmentBuilder;
 import test.jiyun.com.bloodpressureguard.utils.ViewHelper;
 
 public class MainActivity extends BaseActivity {
@@ -36,6 +40,8 @@ public class MainActivity extends BaseActivity {
     ImageView mTitleImage;
     @Bind(R.id.mTitleLayout)
     LinearLayout mTitleLayout;
+    @Bind(R.id.Frament_Layout)
+    FrameLayout FramentLayout;
 
     /*下方按钮选中的集合*/
     private List<Drawable> mDrawableYesList;
@@ -73,10 +79,13 @@ public class MainActivity extends BaseActivity {
             /*医生在线按钮*/
             case R.id.mTextOne:
                 getController(0);
+                mTitle.setText("医生在线");
                 break;
             /*血压管理按钮*/
             case R.id.mTextTwo:
                 getController(1);
+                mTitle.setText("血压管理");
+                FragmentBuilder.getInstance(MainActivity.this).startFragment(BloodPressureFragment.class).addFragment(R.id.Frament_Layout).builder();
                 break;
             /*个人中心按钮*/
             case R.id.mTitleImage:
@@ -182,4 +191,10 @@ public class MainActivity extends BaseActivity {
     }
 
 
+    @Override
+    protected void onCreate(Bundle savedInstanceState) {
+        super.onCreate(savedInstanceState);
+        // TODO: add setContentView(...) invocation
+        ButterKnife.bind(this);
+    }
 }

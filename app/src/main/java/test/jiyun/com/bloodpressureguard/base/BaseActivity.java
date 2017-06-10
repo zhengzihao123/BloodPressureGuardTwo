@@ -21,10 +21,12 @@ public abstract class BaseActivity extends AppCompatActivity {
         loadData();
         listener();
     }
-    public void setData(){
+
+    public void setData() {
 
 
     }
+
     //指定布局
     protected abstract int layoutId();
 
