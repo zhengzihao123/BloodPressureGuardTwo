@@ -1,0 +1,33 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:orientation="vertical" android:layout_width="match_parent"
+    android:layout_height="match_parent">
+
+    <include
+        android:id="@+id/message"
+        layout="@layout/people"
+        android:layout_width="match_parent"
+        android:layout_height="@dimen/y80">
+    </include>
+
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="@dimen/y80"
+        android:background="#F0F0F0">
+
+        <TextView
+            android:id="@+id/question_textview"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="向医生提问"
+            android:layout_centerInParent="true"
+            android:textSize="@dimen/x35"/>
+        <ImageView
+            android:layout_toLeftOf="@id/question_textview"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:src="@drawable/add_questin_img"/>
+
+    </RelativeLayout>
+
+</LinearLayout>

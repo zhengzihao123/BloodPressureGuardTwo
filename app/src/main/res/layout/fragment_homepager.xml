@@ -7,4 +7,7 @@
     android:orientation="vertical">
     <!--侧拉菜单-->
 
+    <include
+        layout="@layout/personal_center_fragment"></include>
+
 </LinearLayout>
