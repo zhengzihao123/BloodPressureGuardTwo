@@ -3,4 +3,10 @@
     <color name="colorPrimary">#3F51B5</color>
     <color name="colorPrimaryDark">#303F9F</color>
     <color name="colorAccent">#FF4081</color>
+    <color name="color_bg_press">#EBEBEB</color>
+    <color name="white">#FFFFFF</color>
+    <color name="gray">#C0C0C0</color>
+    <color name="green">#4CBF5B</color>
+    <color name="line">#ECECEC</color>
+    <color name="colorHui">#d2cdcd</color>
 </resources>

@@ -1,0 +1,94 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:orientation="vertical" android:layout_width="match_parent"
+    android:layout_height="match_parent">
+    <include
+        android:id="@+id/set"
+        layout="@layout/people"
+        android:layout_width="match_parent"
+        android:layout_height="@dimen/y80">
+    </include>
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="@dimen/x294"
+        android:orientation="vertical">
+        <RelativeLayout
+            android:id="@+id/ZhangHu"
+            android:clickable="true"
+            android:layout_width="match_parent"
+            android:layout_height="@dimen/y93"
+            android:background="@drawable/backgroad_view">
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="账户"
+                android:layout_centerVertical="true"
+                android:layout_marginLeft="@dimen/x20"
+                android:textSize="@dimen/x32"
+                android:textColor="#cac3c3"/>
+            <ImageView
+                android:layout_alignParentRight="true"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_centerVertical="true"
+                android:src="@drawable/arrow_right"/>
+        </RelativeLayout>
+        <ImageView
+            android:layout_width="match_parent"
+            android:layout_height="@dimen/x1"
+            android:background="#c0bebe"/>
+        <RelativeLayout
+            android:id="@+id/Clear"
+            android:clickable="true"
+            android:layout_width="match_parent"
+            android:layout_height="@dimen/y93"
+            android:background="@drawable/backgroad_view">
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="清理缓存"
+                android:layout_centerVertical="true"
+                android:layout_marginLeft="@dimen/x20"
+                android:textSize="@dimen/x32"
+                android:textColor="#cac3c3"/>
+            <ImageView
+                android:layout_alignParentRight="true"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_centerVertical="true"
+                android:src="@drawable/arrow_right"/>
+        </RelativeLayout>
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="@dimen/y15"
+            android:background="#e4e4e4">
+        </LinearLayout>
+        <RelativeLayout
+            android:id="@+id/GuanYu"
+            android:clickable="true"
+            android:layout_width="match_parent"
+            android:layout_height="@dimen/y93"
+            android:background="@drawable/backgroad_view">
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="关于血压卫士"
+                android:layout_centerVertical="true"
+                android:layout_marginLeft="@dimen/x20"
+                android:textSize="@dimen/x32"
+                android:textColor="#cac3c3"/>
+            <ImageView
+                android:layout_alignParentRight="true"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_centerVertical="true"
+                android:src="@drawable/arrow_right"/>
+        </RelativeLayout>
+
+
+    </LinearLayout>
+
+
+
+</LinearLayout>

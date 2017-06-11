@@ -1,0 +1,75 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical">
+    <include
+        layout="@layout/item_title_bar"
+        android:layout_width="match_parent"
+        android:layout_height="50dp"></include>
+  <LinearLayout
+      android:layout_marginTop="10dp"
+      android:layout_width="match_parent"
+      android:layout_height="120dp"
+      android:background="@drawable/login_edit"
+      android:orientation="vertical"
+      android:weightSum="2">
+      <EditText
+          android:id="@+id/UserName"
+          android:layout_marginTop="6dp"
+          android:layout_marginLeft="10dp"
+          android:layout_width="match_parent"
+          android:layout_height="50dp"
+          android:hint="手机"
+          android:drawableLeft="@drawable/login_phone_img"
+          android:layout_weight="1"/>
+
+      <EditText
+          android:id="@+id/UserPassword"
+          android:layout_marginLeft="10dp"
+          android:layout_width="match_parent"
+          android:layout_height="50dp"
+          android:hint="密码"
+          android:drawableLeft="@drawable/login_password_img"
+          android:layout_weight="1"/>
+  </LinearLayout>
+
+    <RelativeLayout
+        android:layout_marginTop="10dp"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content">
+        <TextView
+            android:id="@+id/Forgot_password"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="忘记密码？"
+            android:layout_marginLeft="8dp"
+            android:textColor="#4CBF5B"
+            android:textSize="18dp"/>
+        <TextView
+            android:id="@+id/register"
+            android:layout_alignParentRight="true"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="还没有账号，请注册"
+            android:textColor="#4CBF5B"
+            android:textSize="18dp"/>
+    </RelativeLayout>
+
+    <Button
+        android:layout_marginTop="18dp"
+        android:padding="10dp"
+        android:layout_width="match_parent"
+        android:layout_height="35dp"
+        android:layout_marginLeft="20dp"
+        android:layout_marginRight="20dp"
+        android:background="#4CBF5B"
+        android:textColor="#ffffff"
+
+        android:text="登录"/>
+
+
+
+
+
+</LinearLayout>
