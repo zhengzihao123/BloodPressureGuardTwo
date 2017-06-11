@@ -1,0 +1,45 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical">
+
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="@dimen/y93"
+        android:background="#E2E2E2">
+
+        <TextView
+            android:id="@+id/keyword_query_btn"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignParentRight="true"
+            android:layout_centerVertical="true"
+            android:layout_marginLeft="@dimen/x19"
+            android:layout_marginRight="@dimen/x19"
+            android:text="确定"
+            android:textColor="@color/green"
+            android:textSize="@dimen/x32" />
+
+        <EditText
+            android:id="@+id/keyword_et"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:layout_marginBottom="@dimen/y15"
+            android:layout_marginLeft="@dimen/x16"
+            android:layout_marginTop="@dimen/y15"
+            android:layout_toLeftOf="@id/keyword_query_btn"
+            android:background="@drawable/keyword_bg_et"
+            android:hint="关键字/专家姓名/医院名称/疾病"
+            android:paddingLeft="@dimen/x15"
+            android:textColor="#333333"
+            android:textColorHint="#EBE9E9" />
+
+    </RelativeLayout>
+
+    <ListView
+        android:id="@+id/keyword_listview"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent" />
+
+</LinearLayout>

@@ -1,0 +1,130 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="#F9F9F9"
+    android:orientation="vertical">
+
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="@dimen/y11"
+        android:background="@color/white">
+
+        <ImageView
+            android:id="@+id/search_detail_head"
+            android:layout_width="@dimen/x160"
+            android:layout_height="@dimen/y160"
+            android:layout_marginLeft="@dimen/x16"
+            android:layout_marginTop="@dimen/y31"
+            android:background="@mipmap/ic_launcher" />
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="@dimen/y160"
+            android:layout_marginLeft="@dimen/x21"
+            android:layout_marginTop="@dimen/y31"
+            android:layout_toRightOf="@id/search_detail_head"
+            android:orientation="vertical">
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content">
+
+                <TextView
+                    android:id="@+id/search_detail_name"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="李为民"
+                    android:textColor="#333333"
+                    android:textSize="@dimen/x38" />
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginLeft="@dimen/x24"
+                    android:text="教授"
+                    android:textColor="#CCCCCC"
+                    android:textSize="@dimen/x34" />
+
+            </LinearLayout>
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="@dimen/y10">
+
+                <TextView
+                    android:id="@+id/search_detail_location"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="309医院"
+                    android:textColor="#989898"
+                    android:textSize="@dimen/x28" />
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginLeft="@dimen/x24"
+                    android:text="普通外科"
+                    android:textColor="#CCCCCC"
+                    android:textSize="@dimen/x34" />
+
+            </LinearLayout>
+
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="@dimen/y10"
+                android:text="河南省胸科医院"
+                android:textColor="#878787"
+                android:textSize="@dimen/x30" />
+
+        </LinearLayout>
+
+        <RelativeLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_below="@id/search_detail_head"
+            android:layout_marginTop="@dimen/y10"
+            android:paddingLeft="@dimen/x16"
+            android:paddingRight="@dimen/x16">
+
+            <!--<TextView-->
+            <!--android:layout_width="wrap_content"-->
+            <!--android:layout_height="wrap_content"-->
+            <!--android:text="擅长:"-->
+            <!--android:textColor="#666666"-->
+            <!--android:textSize="@dimen/x30"-->
+            <!--android:textStyle="bold" />-->
+
+            <TextView
+                android:id="@+id/search_detail_content"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:ellipsize="end"
+                android:maxLength="38"
+                android:text="擅长：点击事件就打死傲娇地势较低啊手机大祭司傲娇地阿斯就嗲三角地阿...展开"
+                android:textColor="#666666"
+                android:textSize="@dimen/x30" />
+
+            <TextView
+                android:id="@+id/search_detail_content_all"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="擅长：点击事件就打死傲娇地势较低啊手机大祭司傲娇地阿斯就嗲三角地阿...展开ddddsa"
+                android:textColor="#666666"
+                android:textSize="@dimen/x30"
+                android:visibility="gone" />
+
+        </RelativeLayout>
+
+    </RelativeLayout>
+
+    <ListView
+        android:id="@+id/search_detail_listview"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:layout_marginTop="@dimen/y10" />
+
+</LinearLayout>

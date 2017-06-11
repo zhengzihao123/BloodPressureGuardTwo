@@ -1,0 +1,156 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@color/color_all_bg"
+    android:orientation="vertical">
+
+    <TextView
+        android:layout_width="match_parent"
+        android:layout_height="@dimen/y74"
+        android:paddingLeft="@dimen/y23"
+        android:paddingTop="@dimen/y28"
+        android:text="病情资料"
+        android:textColor="#E1E1DE"
+        android:textSize="@dimen/x30" />
+
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="@dimen/y98"
+        android:background="@color/white">
+
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_centerVertical="true"
+            android:layout_marginLeft="@dimen/x22"
+            android:text="所患疾病："
+            android:textColor="#D3D3D3"
+            android:textSize="@dimen/x34" />
+
+        <LinearLayout
+            android:layout_width="wrap_content"
+            android:layout_height="match_parent"
+            android:layout_alignParentRight="true"
+            android:layout_centerVertical="true"
+            android:layout_marginRight="@dimen/x15"
+            android:gravity="center_vertical">
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginRight="@dimen/x21"
+                android:text="请填写"
+                android:textColor="#666666"
+                android:textSize="@dimen/x30" />
+
+            <ImageView
+                android:layout_width="@dimen/x28"
+                android:layout_height="@dimen/y28"
+                android:src="@drawable/item_arrow_right" />
+        </LinearLayout>
+
+    </RelativeLayout>
+
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="@dimen/y98"
+        android:background="@color/white">
+
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_centerVertical="true"
+            android:layout_marginLeft="@dimen/x22"
+            android:text="症状表现："
+            android:textColor="#D3D3D3"
+            android:textSize="@dimen/x34" />
+
+        <LinearLayout
+            android:layout_width="wrap_content"
+            android:layout_height="match_parent"
+            android:layout_alignParentRight="true"
+            android:layout_centerVertical="true"
+            android:layout_marginRight="@dimen/x15"
+            android:gravity="center_vertical">
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginRight="@dimen/x21"
+                android:text="请填写"
+                android:textColor="#666666"
+                android:textSize="@dimen/x30" />
+
+            <ImageView
+                android:layout_width="@dimen/x28"
+                android:layout_height="@dimen/y28"
+                android:src="@drawable/item_arrow_right" />
+        </LinearLayout>
+
+    </RelativeLayout>
+
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="@dimen/y98"
+        android:background="@color/white">
+
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_centerVertical="true"
+            android:layout_marginLeft="@dimen/x22"
+            android:text="就诊目的："
+            android:textColor="#D3D3D3"
+            android:textSize="@dimen/x34" />
+
+        <LinearLayout
+            android:layout_width="wrap_content"
+            android:layout_height="match_parent"
+            android:layout_alignParentRight="true"
+            android:layout_centerVertical="true"
+            android:layout_marginRight="@dimen/x15"
+            android:gravity="center_vertical">
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginRight="@dimen/x21"
+                android:text="诊断"
+                android:textColor="#666666"
+                android:textSize="@dimen/x30" />
+
+            <ImageView
+                android:layout_width="@dimen/x28"
+                android:layout_height="@dimen/y28"
+                android:src="@drawable/item_arrow_right" />
+        </LinearLayout>
+
+    </RelativeLayout>
+
+    <Button
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginLeft="@dimen/x21"
+        android:layout_marginRight="@dimen/x21"
+        android:layout_marginTop="@dimen/y35"
+        android:background="@drawable/online_query_btn"
+        android:text="上一步"
+        android:textColor="@color/white"
+        android:textSize="@dimen/x36" />
+
+    <Button
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginLeft="@dimen/x21"
+        android:layout_marginRight="@dimen/x21"
+        android:layout_marginTop="@dimen/y35"
+        android:background="@drawable/online_query_btn"
+        android:text="提交"
+        android:textColor="@color/white"
+        android:textSize="@dimen/x36" />
+
+</LinearLayout>
