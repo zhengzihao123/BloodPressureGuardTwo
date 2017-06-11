@@ -15,6 +15,7 @@
         android:visibility="gone"
         android:src="@drawable/persional_normal" />
 
+
     <!--所有页面的标题-->
     <TextView
         android:id="@+id/mTitle"

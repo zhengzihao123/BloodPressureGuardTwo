@@ -24,6 +24,7 @@ import test.jiyun.com.bloodpressureguard.fragment.BloodPressureFragment;
 import test.jiyun.com.bloodpressureguard.model.budler.FragmentBuilder;
 import test.jiyun.com.bloodpressureguard.utils.ViewHelper;
 
+/*主页面*/
 public class MainActivity extends BaseActivity {
 
     @Bind(R.id.mTitle)

@@ -2,12 +2,13 @@
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    android:background="#F9F9F9"
     android:orientation="vertical">
     <!--血压管理-->
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_marginBottom="60dp"
+        android:layout_marginBottom="20dp"
         android:layout_marginTop="10dp"
         android:orientation="vertical">
 
@@ -18,6 +19,13 @@
             android:layout_gravity="center"
             android:src="@drawable/shuoming" />
     </LinearLayout>
+
+    <TextView
+        android:layout_width="match_parent"
+        android:layout_height="1dp"
+        android:layout_marginLeft="10dp"
+        android:layout_marginRight="10dp"
+        android:background="#000" />
 
     <RadioGroup
         android:layout_width="match_parent"
@@ -34,6 +42,7 @@
             android:background="#000000" />
 
         <RadioButton
+            android:id="@+id/mBtnA"
             android:layout_width="0dp"
             android:layout_height="match_parent"
             android:layout_weight="1"
@@ -49,6 +58,7 @@
             android:background="#000" />
 
         <RadioButton
+            android:id="@+id/mBtnB"
             android:layout_width="0dp"
             android:layout_height="match_parent"
             android:layout_weight="1"
@@ -64,6 +74,7 @@
             android:background="#000" />
 
         <RadioButton
+            android:id="@+id/mBtnC"
             android:layout_width="0dp"
             android:layout_height="match_parent"
             android:layout_weight="1"
@@ -79,6 +90,7 @@
             android:background="#000" />
 
         <RadioButton
+            android:id="@+id/mBtnD"
             android:layout_width="0dp"
             android:layout_height="match_parent"
             android:layout_weight="1"
@@ -101,6 +113,100 @@
         android:layout_marginLeft="10dp"
         android:layout_marginRight="10dp"
         android:background="#000" />
+
+
+    <test.jiyun.com.bloodpressureguard.view.MyStatisticsView
+        android:clickable="true"
+        android:id="@+id/mView"
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        android:layout_marginBottom="10dp"
+        android:layout_marginLeft="6dp"
+        android:layout_marginRight="6dp"
+        android:layout_marginTop="10dp"
+        android:layout_weight="1"
+        android:background="@drawable/item_tongjitu_back_color" />
+
+    <test.jiyun.com.bloodpressureguard.view.MyStatisticsViewTwo
+        android:id="@+id/mViewTwo"
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        android:layout_marginBottom="10dp"
+        android:layout_marginLeft="6dp"
+        android:layout_marginRight="6dp"
+        android:layout_marginTop="10dp"
+        android:layout_weight="1"
+        android:visibility="gone"
+        android:background="@drawable/item_tongjitu_back_color" />
+
+
+    <test.jiyun.com.bloodpressureguard.view.MyStatisticsViewThree
+        android:id="@+id/mViewThree"
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        android:layout_marginBottom="10dp"
+        android:layout_marginLeft="6dp"
+        android:layout_marginRight="6dp"
+        android:layout_marginTop="10dp"
+        android:layout_weight="1"
+        android:visibility="gone"
+        android:background="@drawable/item_tongjitu_back_color" />
+
+    <test.jiyun.com.bloodpressureguard.view.MyStatisticsViewTwoFour
+        android:id="@+id/mViewFour"
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        android:layout_marginBottom="10dp"
+        android:layout_marginLeft="6dp"
+        android:layout_marginRight="6dp"
+        android:layout_marginTop="10dp"
+        android:layout_weight="1"
+        android:visibility="gone"
+        android:background="@drawable/item_tongjitu_back_color" />
+
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"
+        android:weightSum="3">
+
+        <TextView
+            android:id="@+id/mTextWen"
+            android:layout_width="0dp"
+            android:layout_height="match_parent"
+            android:layout_weight="1"
+            android:clickable="true"
+            android:drawablePadding="4dp"
+            android:drawableTop="@drawable/ask_doctor_img"
+            android:gravity="center_horizontal"
+            android:text="问医生"
+            android:textColor="#666666" />
+
+        <TextView
+            android:id="@+id/mTextZX"
+            android:layout_width="0dp"
+            android:layout_height="match_parent"
+            android:layout_weight="1"
+            android:clickable="true"
+            android:drawablePadding="4dp"
+            android:drawableTop="@drawable/zixun"
+            android:gravity="center_horizontal"
+            android:text="资讯"
+            android:textColor="#666666" />
+
+        <TextView
+            android:id="@+id/mTextTX"
+            android:layout_width="0dp"
+            android:layout_height="match_parent"
+            android:layout_weight="1"
+            android:clickable="true"
+            android:drawablePadding="4dp"
+            android:drawableTop="@drawable/tixing"
+            android:gravity="center_horizontal"
+            android:text="提醒"
+            android:textColor="#666666" />
+    </LinearLayout>
 
 
 </LinearLayout>
