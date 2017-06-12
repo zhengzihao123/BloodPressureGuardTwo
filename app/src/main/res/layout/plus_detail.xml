@@ -1,0 +1,140 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@color/color_all_bg"
+    android:orientation="vertical">
+
+    <TextView
+        android:layout_width="match_parent"
+        android:layout_height="@dimen/y74"
+        android:paddingLeft="@dimen/y23"
+        android:paddingTop="@dimen/y28"
+        android:text="基本资料"
+        android:textColor="#E1E1DE"
+        android:textSize="@dimen/x30" />
+
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="@dimen/y98"
+        android:background="@color/white">
+
+
+        <TextView
+            android:id="@+id/text_one"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_centerVertical="true"
+            android:layout_marginLeft="@dimen/x22"
+            android:text="患者姓名："
+            android:textColor="#999999"
+            android:textSize="@dimen/x34" />
+
+        <EditText
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_centerVertical="true"
+            android:layout_marginLeft="@dimen/x21"
+            android:layout_marginRight="@dimen/x21"
+            android:layout_toRightOf="@id/text_one"
+            android:gravity="end"
+            android:hint="请填写真实姓名"
+            android:textColorHint="#D3D3D3" />
+
+    </RelativeLayout>
+
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="@dimen/y98"
+        android:background="@color/white">
+
+
+        <TextView
+            android:id="@+id/text_two"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_centerVertical="true"
+            android:layout_marginLeft="@dimen/x22"
+            android:text="居住地区："
+            android:textColor="#999999"
+            android:textSize="@dimen/x34" />
+
+        <EditText
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_centerVertical="true"
+            android:layout_marginLeft="@dimen/x21"
+            android:layout_marginRight="@dimen/x21"
+            android:layout_toRightOf="@id/text_two"
+            android:gravity="end" />
+    </RelativeLayout>
+
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="@dimen/y98"
+        android:background="@color/white">
+
+
+        <TextView
+            android:id="@+id/text_three"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_centerVertical="true"
+            android:layout_marginLeft="@dimen/x22"
+            android:text="患者身份证号："
+            android:textColor="#999999"
+            android:textSize="@dimen/x34" />
+
+        <EditText
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_centerVertical="true"
+            android:layout_marginLeft="@dimen/x21"
+            android:layout_marginRight="@dimen/x21"
+            android:layout_toRightOf="@id/text_three"
+            android:gravity="end"
+            android:hint="必填"
+            android:textColorHint="#D3D3D3" />
+
+    </RelativeLayout>
+
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="@dimen/y98"
+        android:background="@color/white">
+
+
+        <TextView
+            android:id="@+id/text_four"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_centerVertical="true"
+            android:layout_marginLeft="@dimen/x22"
+            android:text="患者手机号："
+            android:textColor="#999999"
+            android:textSize="@dimen/x34" />
+
+        <EditText
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_centerVertical="true"
+            android:layout_marginLeft="@dimen/x21"
+            android:layout_marginRight="@dimen/x21"
+            android:layout_toRightOf="@id/text_four"
+            android:gravity="end"
+            android:hint="加号凭证短信将发送至此号码"
+            android:textColorHint="#D3D3D3" />
+    </RelativeLayout>
+
+    <Button
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginLeft="@dimen/x21"
+        android:layout_marginRight="@dimen/x21"
+        android:layout_marginTop="@dimen/y14"
+        android:background="@drawable/online_query_btn"
+        android:text="下一步"
+        android:textColor="@color/white"
+        android:textSize="@dimen/x36" />
+
+</LinearLayout>

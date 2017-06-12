@@ -11,7 +11,7 @@
         android:layout_height="100dp"
         android:background="#c0bebe"
         android:orientation="vertical">
-<ImageView
+<test.jiyun.com.bloodpressureguard.utils.RoundImageView
     android:id="@+id/TouXiang_Image"
     android:layout_width="50dp"
     android:layout_height="50dp"
@@ -36,6 +36,7 @@
         android:background="#c0bebe"/>
 
     <LinearLayout
+        android:id="@+id/My_Add"
         android:background="@drawable/backgroad_view"
         android:clickable="true"
         android:layout_width="match_parent"
@@ -80,6 +81,7 @@
         android:background="#c0bebe"/>
 
     <LinearLayout
+        android:id="@+id/My_Collection"
         android:background="@drawable/backgroad_view"
         android:clickable="true"
         android:layout_width="match_parent"
@@ -124,6 +126,7 @@
         android:background="#e4e4e4"/>
 
     <LinearLayout
+        android:id="@+id/My_Data"
         android:background="@drawable/backgroad_view"
         android:clickable="true"
         android:layout_width="match_parent"
@@ -166,6 +169,7 @@
 
     </LinearLayout>
     <LinearLayout
+        android:id="@+id/My_Message"
         android:background="@drawable/backgroad_view"
         android:clickable="true"
         android:layout_width="match_parent"
@@ -208,6 +212,7 @@
         android:background="#c0bebe"/>
 
     <LinearLayout
+        android:id="@+id/My_Set"
         android:background="@drawable/backgroad_view"
         android:clickable="true"
         android:layout_width="match_parent"
