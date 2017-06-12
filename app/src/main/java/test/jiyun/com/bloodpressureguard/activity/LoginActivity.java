@@ -111,7 +111,7 @@ public class LoginActivity extends BaseActivity {
                         "\n", map, new ResaultCallBack() {
                     @Override
                     public void onSuccess(Object obj) {
-
+////
                         Login loginbean = (Login) obj;
                         if (loginbean.getState() == 200) {
                             SharedPreferences.Editor edit = App.sharedPreferences.edit();
