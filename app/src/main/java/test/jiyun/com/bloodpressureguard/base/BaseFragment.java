@@ -54,9 +54,7 @@ public abstract class BaseFragment extends Fragment {
      * 初始化控件
      */
     public void initView(View view) {
-    }
-
-    ;
+    };
 
 
     //初始化组件

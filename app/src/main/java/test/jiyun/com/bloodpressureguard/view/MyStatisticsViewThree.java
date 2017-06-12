@@ -9,13 +9,15 @@ import android.util.AttributeSet;
 import android.util.Log;
 import android.view.View;
 
+import java.text.SimpleDateFormat;
+import java.util.Date;
 import java.util.List;
 
 /**
  * Created by 韩志军 on 2017/6/11.
  */
 
-public class MyStatisticsViewThree extends View{
+public class MyStatisticsViewThree extends View {
     //-------------View相关-------------
     //View自身的宽和高
     private int mHeight;
@@ -23,7 +25,7 @@ public class MyStatisticsViewThree extends View{
 
     //-------------统计图相关-------------
     //x轴的条目
-    private int xNum = 4;
+    private int xNum = 6;
     //y轴的条目
     private int yNum = 6;
     //y轴条目之间的距离
@@ -36,7 +38,7 @@ public class MyStatisticsViewThree extends View{
     /*血压记录的时间*/
     private int[] xjj ={};
 
-    private String[] xStr = new String[]{"5月23日", "29", "6月4日", "10日", "16日"};
+    private String[] xStr = {};
     private String[] yStr = new String[]{" ", "40", "80", "120", "160", "200"};
     private String str = "每月血压统计表";
 
@@ -68,6 +70,7 @@ public class MyStatisticsViewThree extends View{
     /*高低压颜色*/
     private int pointColorGY = 0xFF0000FF;
     private int pointColorDY = 0xFF9B9BCD;
+    private int day;
 
 
     public MyStatisticsViewThree(Context context) {
@@ -76,6 +79,13 @@ public class MyStatisticsViewThree extends View{
 
     public MyStatisticsViewThree(Context context, AttributeSet attrs) {
         super(context, attrs);
+        SimpleDateFormat formatter = new SimpleDateFormat("dd");
+        Date curDate = new Date(System.currentTimeMillis());
+        String str = formatter.format(curDate);
+        day = Integer.parseInt(str);
+
+        xStr = new String[]{day -5+"日", day -4+"日", day -3+"日", day -2+"日", day -1+"日" ,"今天", day +1+"日"};
+
     }
 
     public MyStatisticsViewThree(Context context, AttributeSet attrs, int defStyleAttr) {
@@ -252,22 +262,32 @@ public class MyStatisticsViewThree extends View{
     /*画高压*/
     private void drawLine(Canvas canvas) {
         for (int i = 0; i < yValue.length; i++) {
+            String s = xStr[0];
+            String substring = s.substring(0, xStr[0].length() - 1);
 //            float position = -(yValue[i]/40*ySize);
             float position = -(yValue[i] * 5 * ySize / 200);
-            float positiona = (xjj[i] * xSize / 6);
+            float positiona = ((xjj[i]-Integer.parseInt(substring))*xSize);
             //画黑点
             canvas.drawCircle(positiona, position, 5, pointPaintGY);
+            if (i>0){
+                canvas.drawLine((xjj[i-1]-Integer.parseInt(substring))*xSize,yValue[i-1] * 5 * ySize / 200,(xjj[i]-Integer.parseInt(substring))*xSize,yValue[i] * 5 * ySize / 200,borderPaint);
+            }
         }
     }
 
     /*画低压*/
     private void drawLineA(Canvas canvas) {
         for (int i = 0; i < yValuea.length; i++) {
+            String s = xStr[0];
+            String substring = s.substring(0, xStr[0].length() - 1);
             float position = -(yValuea[i] * 5 * ySize / 200);
-            Log.d("MyStatisticsView", "position:" + position);
-            float positiona = (xjj[i] * xSize / 6);
+            float positiona = ((xjj[i]-Integer.parseInt(substring))*xSize);
+            Log.d("MyStatisticsViewTwo", "positiona:" + positiona);
             //画黑点
             canvas.drawCircle(positiona, position, 5, pointPaintDY);
+            if (i>0){
+                canvas.drawLine((xjj[i-1]-Integer.parseInt(substring))*xSize,yValue[i-1] * 5 * ySize / 200,(xjj[i]-Integer.parseInt(substring))*xSize,yValue[i] * 5 * ySize / 200,borderPaint);
+            }
         }
     }
 }

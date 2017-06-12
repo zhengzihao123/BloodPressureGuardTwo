@@ -1,6 +1,7 @@
 package test.jiyun.com.bloodpressureguard.activity;
 
 import android.content.Context;
+import android.content.Intent;
 import android.graphics.drawable.Drawable;
 import android.os.Bundle;
 import android.util.Log;
@@ -8,11 +9,14 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.AbsListView;
+import android.widget.AdapterView;
 import android.widget.BaseAdapter;
 import android.widget.GridView;
 import android.widget.LinearLayout;
+import android.widget.PopupWindow;
 import android.widget.RelativeLayout;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -79,6 +83,15 @@ public class XueYaZXActivity extends BaseActivity {
 
     @Override
     protected void listener() {
+        mGridView.setOnItemClickListener(new AdapterView.OnItemClickListener() {
+            @Override
+            public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
+                Intent in=new Intent(XueYaZXActivity.this,XiangQingActivity.class);
+                in.putExtra("title",mNameList.get(position));
+                in.putExtra("flg",position+1+"");
+                startActivity(in);
+            }
+        });
 
     }
 

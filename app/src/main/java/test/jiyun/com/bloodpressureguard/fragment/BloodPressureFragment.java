@@ -1,29 +1,31 @@
 package test.jiyun.com.bloodpressureguard.fragment;
 
 import android.content.Intent;
-import android.os.Bundle;
-import android.view.LayoutInflater;
+import android.util.Log;
 import android.view.View;
-import android.view.ViewGroup;
 import android.widget.ImageView;
 import android.widget.RadioButton;
 import android.widget.TextView;
 import android.widget.Toast;
 
+import java.text.SimpleDateFormat;
 import java.util.ArrayList;
+import java.util.Date;
 import java.util.List;
 
 import butterknife.Bind;
-import butterknife.ButterKnife;
 import butterknife.OnClick;
 import test.jiyun.com.bloodpressureguard.R;
 import test.jiyun.com.bloodpressureguard.activity.ShuJuJiLuActivity;
+import test.jiyun.com.bloodpressureguard.activity.WenYishengActivity;
 import test.jiyun.com.bloodpressureguard.activity.XueYaJiLuActivity;
 import test.jiyun.com.bloodpressureguard.activity.XueYaZXActivity;
 import test.jiyun.com.bloodpressureguard.base.BaseFragment;
+import test.jiyun.com.bloodpressureguard.sq.MyManager;
+import test.jiyun.com.bloodpressureguard.sq.Student;
 import test.jiyun.com.bloodpressureguard.view.MyStatisticsView;
-import test.jiyun.com.bloodpressureguard.view.MyStatisticsViewThree;
 import test.jiyun.com.bloodpressureguard.view.MyStatisticsViewTwo;
+import test.jiyun.com.bloodpressureguard.view.MyStatisticsViewThree;
 import test.jiyun.com.bloodpressureguard.view.MyStatisticsViewTwoFour;
 
 
@@ -37,8 +39,6 @@ public class BloodPressureFragment extends BaseFragment {
     ImageView imageView;
     @Bind(R.id.mBtnA)
     RadioButton mBtnA;
-    @Bind(R.id.mBtnB)
-    RadioButton mBtnB;
     @Bind(R.id.mBtnC)
     RadioButton mBtnC;
     @Bind(R.id.mBtnD)
@@ -51,8 +51,6 @@ public class BloodPressureFragment extends BaseFragment {
     TextView mTextZX;
     @Bind(R.id.mTextTX)
     TextView mTextTX;
-    @Bind(R.id.mViewTwo)
-    MyStatisticsViewTwo mViewTwo;
     @Bind(R.id.mViewThree)
     MyStatisticsViewThree mViewThree;
     @Bind(R.id.mViewFour)
@@ -61,6 +59,7 @@ public class BloodPressureFragment extends BaseFragment {
     private List mGaoYa;/*高压集合*/
     private List mDiYa;/*低压集合*/
     private List mTime;
+    private MyManager myManager;
 
     @Override
     protected int ViewID() {
@@ -69,10 +68,7 @@ public class BloodPressureFragment extends BaseFragment {
 
     @Override
     protected void initView() {
-        mGaoYa = new ArrayList();
-        mDiYa = new ArrayList();
-        mTime = new ArrayList();
-        mViewOneShow();
+        myManager = new MyManager(getActivity());
     }
 
     @Override
@@ -93,8 +89,15 @@ public class BloodPressureFragment extends BaseFragment {
 
     }
 
+    @Override
+    public void onResume() {
+        super.onResume();
+        if (mBtnA.isChecked()) {
+            mViewOneShow();
+        }
+    }
 
-    @OnClick({R.id.mView, R.id.mViewTwo, R.id.mViewThree, R.id.mViewFour,R.id.imageView, R.id.mBtnA, R.id.mBtnB, R.id.mBtnC, R.id.mBtnD, R.id.mTextWen, R.id.mTextZX, R.id.mTextTX})
+    @OnClick({R.id.mView, R.id.mViewThree, R.id.mViewFour, R.id.imageView, R.id.mBtnA, R.id.mBtnC, R.id.mBtnD, R.id.mTextWen, R.id.mTextZX, R.id.mTextTX})
     public void onViewClicked(View view) {
         switch (view.getId()) {
             /*上传血压数据*/
@@ -105,38 +108,18 @@ public class BloodPressureFragment extends BaseFragment {
             case R.id.mBtnA:
                 mViewOneShow();
                 break;
-            case R.id.mBtnB:
-                mGaoYa = new ArrayList();
-                mDiYa = new ArrayList();
-                mTime = new ArrayList();
-                mGaoYa.add(160);
-                mDiYa.add(100);
-                mTime.add(10);
-                mViewTwo.setShuJu(mGaoYa, mDiYa, mTime);
-                getMyView(mViewTwo);
-                break;
             case R.id.mBtnC:
-                mGaoYa = new ArrayList();
-                mDiYa = new ArrayList();
-                mTime = new ArrayList();
-                mGaoYa.add(160);
-                mDiYa.add(100);
-                mTime.add(20);
-                getMyView(mViewThree);
-                mViewThree.setShuJu(mGaoYa, mDiYa, mTime);
+                mViewThreeShow();
+//                getMyView(mViewThree);
+//                mViewThree.setShuJu(mGaoYa, mDiYa, mTime);
                 break;
             case R.id.mBtnD:
-                mGaoYa = new ArrayList();
-                mDiYa = new ArrayList();
-                mTime = new ArrayList();
-                mGaoYa.add(160);
-                mDiYa.add(100);
-                mTime.add(10);
-                mViewFour.setShuJu(mGaoYa, mDiYa, mTime);
-                getMyView(mViewFour);
+                mViewFourShow();
                 break;
-            /*问yishen*/
+            /*医生*/
             case R.id.mTextWen:
+                Intent inWen = new Intent(getActivity(), WenYishengActivity.class);
+                getActivity().startActivity(inWen);
                 break;
             /*资讯*/
             case R.id.mTextZX:
@@ -149,8 +132,7 @@ public class BloodPressureFragment extends BaseFragment {
             case R.id.mView:
                 getTiaoZhuang();
                 break;
-            case R.id.mViewTwo:
-                break;
+
             case R.id.mViewThree:
                 break;
             case R.id.mViewFour:
@@ -158,24 +140,124 @@ public class BloodPressureFragment extends BaseFragment {
         }
     }
 
+    /*查询某一天的数据*/
     private void mViewOneShow() {
-        mGaoYa.add(160);
-        mGaoYa.add(140);
-        mGaoYa.add(170);
-        mDiYa.add(70);
-        mDiYa.add(80);
-        mDiYa.add(90);
-        mTime.add(4);
-        mTime.add(14);
-        mTime.add(22);
+        mGaoYa = new ArrayList();
+        mDiYa = new ArrayList();
+        mTime = new ArrayList();
+        SimpleDateFormat formatter = new SimpleDateFormat("MM-dd");
+        Date curDate = new Date(System.currentTimeMillis());
+        String str = formatter.format(curDate);
+        int yue = 0;
+        String[] split = str.split("-");
+          /*获取当前的月份*/
+        int i = Integer.parseInt(split[0]);
+        if (i < 10)
+            yue = Integer.parseInt(split[0].substring(1, 2));
+        else
+            yue = Integer.parseInt(split[0]);
+
+                /*获取当前的day*/
+        int day = Integer.parseInt(split[1]);
+        Log.d("BloodPressureFragment", "day:" + day);
+        ArrayList<Student> ri = myManager.getRi(yue, day);
+        if (ri.size() <= 0)
+            return;
+        Student student = ri.get(ri.size() - 1);
+        mGaoYa.add(student.getGaoya());
+        mDiYa.add(student.getDiya());
+        String time = student.getTime();
+        String[] split1 = time.split(":");
+        int a = Integer.parseInt(split1[0]);
+        if (a < 10) {
+            String substring = split1[0].substring(0, 1);
+            a = Integer.parseInt(substring);
+        }
+        mTime.add(a);
+
         getMyView(mView);
         mView.setShuJu(mGaoYa, mDiYa, mTime);
+
+    }
+
+    /*查询某月的数据*/
+    private void mViewThreeShow() {
+        mGaoYa = new ArrayList();
+        mDiYa = new ArrayList();
+        mTime = new ArrayList();
+        SimpleDateFormat formatter = new SimpleDateFormat("MM-dd");
+        Date curDate = new Date(System.currentTimeMillis());
+        String str = formatter.format(curDate);
+        int yue = 0;
+        String[] split = str.split("-");
+          /*获取当前的月份*/
+        int i = Integer.parseInt(split[0]);
+        if (i < 10)
+            yue = Integer.parseInt(split[0].substring(1, 2));
+        else
+            yue = Integer.parseInt(split[0]);
+
+                /*获取当前的day*/
+        int day = Integer.parseInt(split[1]);
+        ArrayList<Student> ri = myManager.getYue(yue);
+        if (ri.size() <= 0)
+            return;
+        Log.d("BloodPressureFragment", "ri.get(0).getDay():" + ri.get(0).getDay());
+        for (Student student : ri) {
+            int day2 = student.getDay();
+            ArrayList<Student> riA = myManager.getRiA(day2);
+            Student student1 = riA.get(riA.size() - 1);
+            mGaoYa.add(student1.getGaoya());
+            mDiYa.add(student1.getDiya());
+            int day1 = student1.getDay();
+            Log.d("BloodPressureFragment", "day1:" + day1);
+            mTime.add(day);
+        }
+        getMyView(mViewThree);
+        mViewThree.setShuJu(mGaoYa, mDiYa, mTime);
+    }
+
+    /*查询某年的某月的数据*/
+    private void mViewFourShow() {
+        mGaoYa = new ArrayList();
+        mDiYa = new ArrayList();
+        mTime = new ArrayList();
+        SimpleDateFormat formatter = new SimpleDateFormat("MM-dd");
+        Date curDate = new Date(System.currentTimeMillis());
+        String str = formatter.format(curDate);
+        int yue = 0;
+        String[] split = str.split("-");
+          /*获取当前的月份*/
+        int i = Integer.parseInt(split[0]);
+        if (i < 10)
+            yue = Integer.parseInt(split[0].substring(1, 2));
+        else
+            yue = Integer.parseInt(split[0]);
+
+                /*获取当前的day*/
+        int day = Integer.parseInt(split[1]);
+        ArrayList<Student> ri = myManager.getAllStudent();
+        if (ri.size() <= 0)
+            return;
+        Log.d("BloodPressureFragment", "ri.get(0).getDay():" + ri.get(0).getDay());
+        for (Student student : ri) {
+            int id = student.getId();
+            Log.d("BloodPressureFragment", "id:" + id);
+            ArrayList<Student> riA = myManager.getYueA(id);
+            Student student1 = riA.get(riA.size() - 1);
+            mGaoYa.add(student1.getGaoya());
+            mDiYa.add(student1.getDiya());
+            int day1 = student1.getId();
+            Log.d("BloodPressureFragment", "day1:" + day1);
+            mTime.add(12);
+        }
+        getMyView(mViewFour);
+        mViewFour.setShuJu(mGaoYa, mDiYa, mTime);
     }
 
     /*控制每个view 的显示和消失*/
     protected void getMyView(View view) {
         mView.setVisibility(View.GONE);
-        mViewTwo.setVisibility(View.GONE);
         mViewThree.setVisibility(View.GONE);
         mViewFour.setVisibility(View.GONE);
         view.setVisibility(View.VISIBLE);
@@ -183,8 +265,7 @@ public class BloodPressureFragment extends BaseFragment {
 
 
     public void getTiaoZhuang() {
-        Intent in=new Intent(getActivity(), XueYaJiLuActivity.class);
-        Bundle bun=new Bundle();
+        Intent in = new Intent(getActivity(), XueYaJiLuActivity.class);
         startActivity(in);
     }
 }

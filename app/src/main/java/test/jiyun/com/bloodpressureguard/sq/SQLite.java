@@ -14,20 +14,15 @@ public class SQLite extends SQLiteOpenHelper{
         super(context, name, factory, version);
     }
 
-    public SQLite(Context context, String name, SQLiteDatabase.CursorFactory factory, int version, DatabaseErrorHandler errorHandler) {
-        super(context, name, factory, version, errorHandler);
-    }
-
     @Override
     public void onCreate(SQLiteDatabase db) {
-
-        String sql = "create table animal(id integer,day integer,time integer,gaoya integer,diya,integer)";
+        String sql = "create table hzj(id integer,day integer,time varchar(30),gaoya integer,diya integer,name varchar(30))";
         db.execSQL(sql);
-
     }
 
     @Override
     public void onUpgrade(SQLiteDatabase db, int oldVersion, int newVersion) {
+
 
     }
 }

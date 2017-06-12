@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
     package="test.jiyun.com.bloodpressureguard">
-
+<uses-permission android:name="android.permission.INTERNET"/>
     <application
         android:name=".App"
         android:allowBackup="true"
@@ -18,6 +18,10 @@
         </activity>
         <activity android:name=".activity.ShuJuJiLuActivity"/>
         <activity android:name=".activity.XueYaZXActivity"/>
+        <activity android:name=".activity.WenYishengActivity"/>
+        <activity android:name=".activity.MianFwiTiWenActivity"/>
+        <activity android:name=".activity.XiangQingActivity"/>
+        <activity android:name=".activity.XiangQingErActivity"/>
     </application>
 
 </manifest>

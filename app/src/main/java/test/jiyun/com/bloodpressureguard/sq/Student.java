@@ -7,16 +7,27 @@ package test.jiyun.com.bloodpressureguard.sq;
 public class Student {
     private int id;
     private int day;
-    private int time;
+    private String time;
     private int gaoya;
     private int diya;
+    private String name;
 
-    public Student(int id, int day, int time, int gaoya, int diya) {
+
+    public Student(int id, int day, String time, int gaoya, int diya, String name) {
         this.id = id;
         this.day = day;
         this.time = time;
         this.gaoya = gaoya;
         this.diya = diya;
+        this.name = name;
+    }
+
+    public String getName() {
+        return name;
+    }
+
+    public void setName(String name) {
+        this.name = name;
     }
 
     public Student() {
@@ -38,11 +49,11 @@ public class Student {
         this.day = day;
     }
 
-    public int getTime() {
+    public String getTime() {
         return time;
     }
 
-    public void setTime(int time) {
+    public void setTime(String time) {
         this.time = time;
     }
 

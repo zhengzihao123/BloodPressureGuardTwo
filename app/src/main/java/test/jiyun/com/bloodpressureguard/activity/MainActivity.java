@@ -148,7 +148,7 @@ public class MainActivity extends BaseActivity {
             @Override
             public void onDrawerSlide(View drawerView, float slideOffset) {
                 float slide = 0.7f;
-                int leftSize = (int) (slideOffset * 200);
+                int leftSize = (int) (slideOffset * 100);
                 View mContent = mDrawerLayout.getChildAt(0);
                 float Scale = 0.5f * (1.0f + slideOffset);
                 /*左侧平滑*/

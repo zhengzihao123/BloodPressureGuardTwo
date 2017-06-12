@@ -34,7 +34,7 @@
         android:layout_marginRight="10dp"
         android:orientation="horizontal"
         android:textColor="@drawable/item_radio_text"
-        android:weightSum="4">
+        android:weightSum="3">
 
         <TextView
             android:layout_width="1dp"
@@ -50,22 +50,6 @@
             android:button="@null"
             android:gravity="center"
             android:text="日"
-            android:textColor="@drawable/item_radio_text" />
-
-        <TextView
-            android:layout_width="1dp"
-            android:layout_height="match_parent"
-            android:background="#000" />
-
-        <RadioButton
-            android:id="@+id/mBtnB"
-            android:layout_width="0dp"
-            android:layout_height="match_parent"
-            android:layout_weight="1"
-            android:background="@drawable/item_radio_button"
-            android:button="@null"
-            android:gravity="center"
-            android:text="周"
             android:textColor="@drawable/item_radio_text" />
 
         <TextView
@@ -127,17 +111,6 @@
         android:layout_weight="1"
         android:background="@drawable/item_tongjitu_back_color" />
 
-    <test.jiyun.com.bloodpressureguard.view.MyStatisticsViewTwo
-        android:id="@+id/mViewTwo"
-        android:layout_width="match_parent"
-        android:layout_height="0dp"
-        android:layout_marginBottom="10dp"
-        android:layout_marginLeft="6dp"
-        android:layout_marginRight="6dp"
-        android:layout_marginTop="10dp"
-        android:layout_weight="1"
-        android:visibility="gone"
-        android:background="@drawable/item_tongjitu_back_color" />
 
 
     <test.jiyun.com.bloodpressureguard.view.MyStatisticsViewThree

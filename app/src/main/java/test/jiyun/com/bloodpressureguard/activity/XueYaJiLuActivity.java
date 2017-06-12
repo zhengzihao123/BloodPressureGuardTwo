@@ -6,6 +6,7 @@ import test.jiyun.com.bloodpressureguard.base.BaseActivity;
  * Created by 韩志军 on 2017/6/11.
  */
 
+/*血压详情*/
 public class XueYaJiLuActivity extends BaseActivity{
     @Override
     protected int layoutId() {

@@ -21,7 +21,7 @@ import test.jiyun.com.bloodpressureguard.model.callback.ResaultCallBack;
 public class RetrofitUtil {
 
     //公用的Url
-    private String baseUrl = "http://appnew.ccoo.cn/";
+    private String baseUrl = "http://api.wws.xywy.com/";
     private Retrofit retrofit;
     private static RetrofitUtil retrofitUtil = null;
     private NetWork netWork;

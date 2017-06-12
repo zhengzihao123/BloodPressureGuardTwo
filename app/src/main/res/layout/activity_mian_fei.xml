@@ -1,0 +1,45 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="#FBF8F4"
+    android:id="@+id/yis_zx"
+    android:orientation="vertical">
+    <!--免费提问-->
+    <include
+        layout="@layout/item_title_bar"
+        android:layout_width="match_parent"
+        android:layout_height="50dp" />
+    <TextView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="10dp"
+        android:focusable="true"
+        android:padding="10dp"
+        android:text="请简述您的病情并提交给我们的客服，客服人员会安排专业的健康顾问向您致电，为阁下进行专业的健康指导"
+        android:textSize="18dp" />
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="200dp"
+        android:layout_margin="15dp"
+        android:background="#fff">
+
+        <EditText
+            android:id="@+id/mEdiText"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:hint="请尽量详细描述,不得少于10个字"
+            android:textColorHint="#666666" />
+    </LinearLayout>
+
+    <Button
+        android:id="@+id/mBtnTj"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_margin="10dp"
+        android:background="#4CBF5B"
+        android:text="提交给医生"
+        android:textColor="#fff"
+        android:textSize="20dp" />
+</LinearLayout>
