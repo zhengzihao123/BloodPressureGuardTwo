@@ -1,0 +1,45 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical">
+    <include
+        android:id="@+id/title"
+        layout="@layout/people"
+        android:layout_width="match_parent"
+        android:layout_height="@dimen/y80">
+    </include>
+    <TextView
+        android:id="@+id/Num_Text"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:textColor="#000000"
+        android:textSize="@dimen/x28"
+        android:layout_marginTop="@dimen/x15"
+
+        android:text="更换成功后，下次登录可以使用新的手机号，当前手机号为：15103597440"/>
+
+        <EditText
+            android:id="@+id/edit_num"
+            android:layout_marginTop="@dimen/x20"
+            android:layout_width="match_parent"
+            android:layout_height="@dimen/x80"
+            android:layout_marginLeft="@dimen/x30"
+            android:layout_marginRight="@dimen/x30"
+            android:hint="请输入新的手机号："
+            android:gravity="center"
+            android:background="@null"
+            />
+
+    <Button
+        android:id="@+id/send_yanzhengma"
+        android:layout_width="match_parent"
+        android:layout_height="@dimen/x80"
+        android:layout_marginLeft="@dimen/x40"
+        android:layout_marginRight="@dimen/x40"
+        android:text="发送验证码"
+        android:background="#5f5d5d"
+        android:textSize="@dimen/x30"
+        android:textColor="#ffffff"/>
+
+</LinearLayout>

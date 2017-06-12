@@ -1,7 +1,13 @@
 <?xml version="1.0" encoding="utf-8"?>
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
     package="test.jiyun.com.bloodpressureguard">
-<uses-permission android:name="android.permission.INTERNET"/>
+    <uses-permission android:name="android.permission.WRITE_EXTERNAL_STORAGE" />
+    <uses-permission android:name="android.permission.INTERNET" />
+    <uses-permission android:name="android.permission.ACCESS_NETWORK_STATE" />
+    <uses-permission android:name="android.permission.ACCESS_WIFI_STATE" />
+    <uses-permission android:name="android.permission.READ_SMS" />
+
+
     <application
         android:name=".App"
         android:allowBackup="true"
@@ -18,10 +24,21 @@
         </activity>
         <activity android:name=".activity.ShuJuJiLuActivity"/>
         <activity android:name=".activity.XueYaZXActivity"/>
-        <activity android:name=".activity.WenYishengActivity"/>
-        <activity android:name=".activity.MianFwiTiWenActivity"/>
-        <activity android:name=".activity.XiangQingActivity"/>
-        <activity android:name=".activity.XiangQingErActivity"/>
+        <activity android:name=".activity.LoginActivity"></activity>
+        <activity android:name=".activity.My_Collection"></activity>
+        <activity android:name=".activity.My_Data"></activity>
+        <activity android:name=".activity.My_Message"></activity>
+        <activity android:name=".activity.My_Set"></activity>
+        <activity android:name=".activity.huan_num.Huan_PhoneNum"></activity>
+        <activity android:name=".activity.huan_num.Phone_Num"></activity>
+        <activity android:name=".activity.huan_num.YanZheng_Ma"></activity>
+
+
+        <activity android:name=".activity.WenYishengActivity"></activity>
+        <activity android:name=".activity.MianFwiTiWenActivity"></activity>
+        <activity android:name=".activity.XiangQingActivity"></activity>
+        <activity android:name=".activity.XueYaJiLuActivity"></activity>
+
     </application>
 
 </manifest>

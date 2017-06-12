@@ -1,0 +1,46 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical">
+
+    <include
+        android:id="@+id/title"
+        layout="@layout/people"
+        android:layout_width="match_parent"
+
+        android:layout_height="@dimen/y80">
+    </include>
+
+    <TextView
+        android:id="@+id/TextView_Num"
+        android:layout_marginTop="@dimen/x30"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="151  0359  7440"
+        android:textSize="@dimen/x50"
+        android:textStyle="bold"
+        android:gravity="center"
+       />
+
+    <TextView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:gravity="center"
+        android:layout_marginTop="@dimen/x20"
+        android:textSize="@dimen/x25"
+        android:text="如果当前手机号不再使用，请及时更换手机号"/>
+
+    <Button
+        android:id="@+id/GengHuan"
+        android:layout_marginTop="@dimen/x40"
+        android:layout_width="match_parent"
+        android:layout_height="@dimen/x80"
+        android:layout_marginLeft="@dimen/x30"
+        android:layout_marginRight="@dimen/x30"
+        android:background="#4CBF5B"
+        android:textSize="@dimen/x40"
+        android:textColor="#ffffff"
+        android:text="更换手机号"
+        />
+</LinearLayout>

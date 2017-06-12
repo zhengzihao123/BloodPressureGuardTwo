@@ -29,12 +29,23 @@
                 android:layout_marginLeft="@dimen/x20"
                 android:textSize="@dimen/x32"
                 android:textColor="#cac3c3"/>
+
             <ImageView
+                android:id="@+id/JianTou4"
                 android:layout_alignParentRight="true"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_centerVertical="true"
                 android:src="@drawable/arrow_right"/>
+            <TextView
+                android:id="@+id/XingMing"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:textColor="#333333"
+                android:text="哈哈"
+                android:layout_marginRight="@dimen/x10"
+                android:layout_centerVertical="true"
+                android:layout_toLeftOf="@id/JianTou4"/>
         </RelativeLayout>
         <LinearLayout
             android:layout_width="match_parent"
@@ -63,6 +74,7 @@
                 android:layout_centerVertical="true"
                 android:src="@drawable/arrow_right"/>
             <TextView
+                android:id="@+id/Sex_Nv"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:textColor="#333333"
@@ -98,6 +110,7 @@
                 android:layout_centerVertical="true"
                 android:src="@drawable/arrow_right"/>
             <TextView
+                android:id="@+id/height"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:textColor="#333333"
@@ -132,6 +145,7 @@
                 android:layout_centerVertical="true"
                 android:src="@drawable/arrow_right"/>
             <TextView
+                android:id="@+id/weight"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:textColor="#333333"
@@ -166,6 +180,7 @@
                 android:layout_centerVertical="true"
                 android:src="@drawable/arrow_right"/>
             <TextView
+                android:id="@+id/Birthday_Day"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:textColor="#333333"

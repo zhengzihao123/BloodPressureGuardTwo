@@ -77,6 +77,8 @@ public class HomeFragment extends BaseFragment {
     @Override
     protected void loadData() {
         isLogin = UserUtils.getZhaungTai();
+        Glide.with(HomeFragment.this).load(UserUtils.getUSERImage()).into(TouXiangImage);
+        UserNameTextView.setText(UserUtils.getUSERNAME());
 
     }
 
