@@ -24,13 +24,20 @@ public class MRecyclerView extends RecyclerView {
     private boolean isNoMore = false;
     private ArrayList<View> mHeaderViews = new ArrayList<>();
     private WrapAdapter mWrapAdapter;
+    private float mLastY = -1;
+    private static final float DRAG_RATE = 3;
     private LoadingListener mLoadingListener;
+    private GifRfreshHeader mRefreshHeader;
+    private boolean pullRefreshEnabled = true;
     private boolean loadingMoreEnabled = true;
     //下面的ItemViewType是保留值(ReservedItemViewType),如果用户的adapter与它们重复将会强制抛出异常。不过为了简化,我们检测到重复时对用户的提示是ItemViewType必须小于10000
     private static final int TYPE_REFRESH_HEADER = 10000;//设置一个很大的数字,尽可能避免和用户的adapter冲突
     private static final int TYPE_FOOTER = 10001;
+    private static final int HEADER_INIT_INDEX = 10002;
     private static List<Integer> sHeaderTypes = new ArrayList<>();//每个header必须有不同的type,不然滚动的时候顺序会变化
+    private int mPageCount = 0;
     //adapter没有数据的时候显示,类似于listView的emptyView
+    private View mEmptyView;
     private RelativeLayout mFootView;
     private final AdapterDataObserver mDataObserver = new DataObserver();
 
@@ -48,9 +55,48 @@ public class MRecyclerView extends RecyclerView {
     }
 
     private void init() {
+        if (pullRefreshEnabled) {
+            mRefreshHeader = new GifRfreshHeader(getContext());
+        }
         LoadingMoreFooter footView = new LoadingMoreFooter(getContext());
         mFootView = footView;
         mFootView.setVisibility(GONE);
+    }
+
+    public void setFootViewText(String loading, String noMore) {
+        if (mFootView instanceof LoadingMoreFooter) {
+            ((LoadingMoreFooter) mFootView).setLoadingHint(loading);
+            ((LoadingMoreFooter) mFootView).setNoMoreHint(noMore);
+        }
+    }
+
+    public String getFootViewText() {
+        if (mFootView instanceof LoadingMoreFooter) {
+            String noMoreHint = ((LoadingMoreFooter) mFootView).getNoMoreHint();
+            return noMoreHint;
+        }
+        return "没有任何回帖 回复抢沙发";
+    }
+
+    public void addHeaderView(View view) {
+        sHeaderTypes.add(HEADER_INIT_INDEX + mHeaderViews.size());
+        mHeaderViews.add(view);
+        if (mWrapAdapter != null) {
+            mWrapAdapter.notifyDataSetChanged();
+        }
+    }
+
+    //根据header的ViewType判断是哪个header
+    private View getHeaderViewByType(int itemType) {
+        if (!isHeaderType(itemType)) {
+            return null;
+        }
+        return mHeaderViews.get(itemType - HEADER_INIT_INDEX);
+    }
+
+    //判断一个type是否为HeaderType
+    private boolean isHeaderType(int itemViewType) {
+        return mHeaderViews.size() > 0 && sHeaderTypes.contains(itemViewType);
     }
 
     //判断是否是XRecyclerView保留的itemViewType
@@ -60,6 +106,10 @@ public class MRecyclerView extends RecyclerView {
         } else {
             return false;
         }
+    }
+
+    public void setFootView(final RelativeLayout view) {
+        mFootView = view;
     }
 
     public void loadMoreComplete() {
@@ -81,6 +131,30 @@ public class MRecyclerView extends RecyclerView {
         }
     }
 
+    public void reset() {
+        setNoMore(false);
+        loadMoreComplete();
+        refreshComplete();
+    }
+
+    public void refreshComplete() {
+        mRefreshHeader.refreshComplete();
+        setNoMore(false);
+    }
+
+    public void refreshCompleteTwo() {
+        mRefreshHeader.reset();
+        setNoMore(true);
+    }
+
+    public void setRefreshHeader(GifRfreshHeader refreshHeader) {
+        mRefreshHeader = refreshHeader;
+    }
+
+    public void setPullRefreshEnabled(boolean enabled) {
+        pullRefreshEnabled = enabled;
+    }
+
     public void setLoadingMoreEnabled(boolean enabled) {
         loadingMoreEnabled = enabled;
         if (!enabled) {
@@ -88,6 +162,21 @@ public class MRecyclerView extends RecyclerView {
                 ((LoadingMoreFooter) mFootView).setState(LoadingMoreFooter.STATE_COMPLETE);
             }
         }
+    }
+
+    public void setLoadingMoreProgressStyle(int style) {
+        if (mFootView instanceof LoadingMoreFooter) {
+            // ((LoadingMoreFooter) mFootView).setProgressStyle(style);
+        }
+    }
+
+    public void setEmptyView(View emptyView) {
+        this.mEmptyView = emptyView;
+        mDataObserver.onChanged();
+    }
+
+    public View getEmptyView() {
+        return mEmptyView;
     }
 
     @Override
@@ -158,7 +247,6 @@ public class MRecyclerView extends RecyclerView {
         }
     }
 
-
     private int findMax(int[] lastPositions) {
         int max = lastPositions[0];
         for (int value : lastPositions) {
@@ -169,11 +257,32 @@ public class MRecyclerView extends RecyclerView {
         return max;
     }
 
+    private boolean isOnTop() {
+        if (mRefreshHeader.getParent() != null) {
+            return true;
+        } else {
+            return false;
+        }
+    }
+
     private class DataObserver extends AdapterDataObserver {
         @Override
         public void onChanged() {
             if (mWrapAdapter != null) {
                 mWrapAdapter.notifyDataSetChanged();
+            }
+            if (mWrapAdapter != null && mEmptyView != null) {
+                int emptyCount = 1 + mWrapAdapter.getHeadersCount();
+                if (loadingMoreEnabled) {
+                    emptyCount++;
+                }
+                if (mWrapAdapter.getItemCount() == emptyCount) {
+                    mEmptyView.setVisibility(View.VISIBLE);
+                    MRecyclerView.this.setVisibility(View.GONE);
+                } else {
+                    mEmptyView.setVisibility(View.GONE);
+                    MRecyclerView.this.setVisibility(View.VISIBLE);
+                }
             }
         }
 
@@ -238,7 +347,11 @@ public class MRecyclerView extends RecyclerView {
 
         @Override
         public ViewHolder onCreateViewHolder(ViewGroup parent, int viewType) {
-            if (viewType == TYPE_FOOTER) {
+            if (viewType == TYPE_REFRESH_HEADER) {
+                return new SimpleViewHolder(mRefreshHeader);
+            } else if (isHeaderType(viewType)) {
+                return new SimpleViewHolder(getHeaderViewByType(viewType));
+            } else if (viewType == TYPE_FOOTER) {
                 return new SimpleViewHolder(mFootView);
             }
             return adapter.onCreateViewHolder(parent, viewType);
@@ -405,9 +518,9 @@ public class MRecyclerView extends RecyclerView {
         mLoadingListener = listener;
     }
 
+
     public interface LoadingListener {
 
         void onLoadMore();
-
     }
 }

@@ -17,7 +17,7 @@
             android:layout_height="@dimen/y160"
             android:layout_marginLeft="@dimen/x16"
             android:layout_marginTop="@dimen/y31"
-            android:background="@mipmap/ic_launcher" />
+            android:background="@drawable/head" />
 
         <LinearLayout
             android:layout_width="match_parent"
@@ -40,6 +40,7 @@
                     android:textSize="@dimen/x38" />
 
                 <TextView
+                    android:id="@+id/search_detail_type"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_marginLeft="@dimen/x24"
@@ -63,6 +64,7 @@
                     android:textSize="@dimen/x28" />
 
                 <TextView
+                    android:id="@+id/search_detail_expert"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_marginLeft="@dimen/x24"
@@ -73,10 +75,11 @@
             </LinearLayout>
 
             <TextView
+                android:id="@+id/search_detail_offer"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_marginTop="@dimen/y10"
-                android:text="河南省胸科医院"
+                android:text="主治医师"
                 android:textColor="#878787"
                 android:textSize="@dimen/x30" />
 
@@ -122,19 +125,20 @@
     </RelativeLayout>
 
     <android.support.design.widget.TabLayout
+        android:id="@+id/search_detail_tab"
         android:layout_width="match_parent"
         android:layout_height="35dp"
         android:layout_marginTop="@dimen/y9"
         android:background="@color/white"
-        app:tabGravity="center"
+        app:tabGravity="fill"
         app:tabIndicatorColor="#59C079"
-        app:tabIndicatorHeight="@dimen/y12"
+        app:tabIndicatorHeight="@dimen/y5"
         app:tabMode="fixed"
         app:tabSelectedTextColor="#333333"
         app:tabTextColor="#999999" />
 
     <android.support.v4.view.ViewPager
-        android:id="@+id/search_item_pager"
+        android:id="@+id/search_detail_pager"
         android:layout_width="match_parent"
         android:layout_height="match_parent" />
 

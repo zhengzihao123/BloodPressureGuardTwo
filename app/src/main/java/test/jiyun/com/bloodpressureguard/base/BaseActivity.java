@@ -3,6 +3,8 @@ package test.jiyun.com.bloodpressureguard.base;
 import android.os.Bundle;
 import android.support.annotation.Nullable;
 import android.support.v7.app.AppCompatActivity;
+import android.text.TextUtils;
+import android.widget.Toast;
 
 
 import butterknife.ButterKnife;
@@ -56,10 +58,17 @@ public abstract class BaseActivity extends AppCompatActivity {
         super.onPause();
     }
 
+    public void showToast(String str) {
+        if (TextUtils.isEmpty(str)) {
+            str = "";
+        }
+        Toast.makeText(App.activity, str, Toast.LENGTH_SHORT).show();
+    }
 
     @Override
     protected void onDestroy() {
         super.onDestroy();
+        ButterKnife.unbind(this);
     }
 
 }
