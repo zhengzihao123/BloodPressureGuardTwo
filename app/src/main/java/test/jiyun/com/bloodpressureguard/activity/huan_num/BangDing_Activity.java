@@ -45,7 +45,7 @@ public class BangDing_Activity extends BaseActivity {
     @Bind(R.id.title_text)
     TextView titleText;
     private String num;
-    String string;
+   private  String string;
 
     @Override
     protected int layoutId() {
@@ -97,7 +97,7 @@ public class BangDing_Activity extends BaseActivity {
                 break;
             case R.id.Button_BangDing:
                 Map<String,String > map = new HashMap();
-                map.put("act","msm");
+                map.put("act","sms");
                 map.put("fun","verifyCode");
                 map.put("target",num);
                 map.put("tag","BloodAndroid");
@@ -105,7 +105,7 @@ public class BangDing_Activity extends BaseActivity {
                 map.put("yz","1");
                 map.put("sign","2c19b2821ebc5306c3ac37bac5b4288b");
                 map.put("type","3");
-                RetrofitUtil.getInstance().getRetrofit(HoastUtils.HOST, map, new ResaultCallBack() {
+                RetrofitUtil.getInstance().getRetrofit("http://api.wws.xywy.com/index.php", map, new ResaultCallBack() {
                     @Override
                     public void onSuccess(Object obj) {
                         BangDing bangdingBean= (BangDing) obj;
