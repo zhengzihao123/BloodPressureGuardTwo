@@ -256,7 +256,7 @@ public class MyStatisticsView extends View {
     /*画高压*/
     private void drawLine(Canvas canvas) {
         for (int i = 0; i < yValue.length; i++) {
-//            float position = -(yValue[i]/40*ySize);
+           //float position = -(yValue[i]/40*ySize);
             float position = -(yValue[i] * 5 * ySize / 200);
             float positiona = (xjj[i] * xSize / 6);
             //画黑点

@@ -2,6 +2,8 @@ package test.jiyun.com.bloodpressureguard.activity;
 
 import android.content.Intent;
 import android.os.Bundle;
+import android.view.View;
+import android.widget.ImageView;
 import android.widget.TextView;
 
 import butterknife.Bind;
@@ -20,6 +22,8 @@ public class WenYishengActivity extends BaseActivity {
     TextView mTitle;
     @Bind(R.id.mTiWen)
     TextView mTiWen;
+    @Bind(R.id.mFinsh)
+    ImageView mFinsh;
 
     @Override
     protected int layoutId() {
@@ -42,9 +46,18 @@ public class WenYishengActivity extends BaseActivity {
 
     }
 
-    @OnClick(R.id.mTiWen)
-    public void onViewClicked() {
-        Intent in=new Intent(WenYishengActivity.this,MianFwiTiWenActivity.class);
-        startActivity(in);
+
+    @OnClick({R.id.mFinsh, R.id.mTiWen})
+    public void onViewClicked(View view) {
+        switch (view.getId()) {
+            case R.id.mFinsh:
+                finish();
+                break;
+            case R.id.mTiWen:
+                Intent in = new Intent(WenYishengActivity.this, MianFwiTiWenActivity.class);
+                startActivity(in);
+                break;
+        }
     }
+
 }

@@ -2,17 +2,12 @@ package test.jiyun.com.bloodpressureguard.activity;
 
 import android.content.Context;
 import android.content.Intent;
-import android.graphics.drawable.ColorDrawable;
 import android.os.Bundle;
-import android.os.Handler;
-import android.os.Message;
 import android.support.v7.widget.LinearLayoutManager;
 import android.util.Log;
-import android.view.LayoutInflater;
 import android.view.View;
-import android.view.ViewGroup;
+import android.widget.ImageView;
 import android.widget.LinearLayout;
-import android.widget.PopupWindow;
 import android.widget.TextView;
 
 import com.androidkun.PullToRefreshRecyclerView;
@@ -29,14 +24,12 @@ import java.util.Map;
 
 import butterknife.Bind;
 import butterknife.ButterKnife;
+import butterknife.OnClick;
 import test.jiyun.com.bloodpressureguard.R;
 import test.jiyun.com.bloodpressureguard.base.BaseActivity;
 import test.jiyun.com.bloodpressureguard.bean.ChangShiBean;
 import test.jiyun.com.bloodpressureguard.model.callback.ResaultCallBack;
 import test.jiyun.com.bloodpressureguard.model.http.RetrofitUtil;
-
-import static android.R.attr.data;
-import static test.jiyun.com.bloodpressureguard.App.activity;
 
 /**
  * Created by 韩志军 on 2017/6/12.
@@ -50,6 +43,8 @@ public class XiangQingActivity extends BaseActivity {
     PullToRefreshRecyclerView mListView;
     @Bind(R.id.mShow)
     LinearLayout mShow;
+    @Bind(R.id.mFinsh)
+    ImageView mFinsh;
 
     private String url = "index.php";
     private Map<String, String> map;
@@ -62,6 +57,7 @@ public class XiangQingActivity extends BaseActivity {
     protected int layoutId() {
         return R.layout.activity_xiangqing;
     }
+
     @Override
     protected void initView() {
         String title = getIntent().getStringExtra("title");
@@ -165,6 +161,12 @@ public class XiangQingActivity extends BaseActivity {
     }
 
 
+    @OnClick(R.id.mFinsh)
+    public void onViewClicked() {
+        finish();
+    }
+
+
     class MyAdapter extends BaseAdapter<ChangShiBean.DataBean> {
 
         public MyAdapter(Context context, int layoutId, List<ChangShiBean.DataBean> datas) {
@@ -173,7 +175,7 @@ public class XiangQingActivity extends BaseActivity {
 
         @Override
         public void convert(ViewHolder holder, final ChangShiBean.DataBean dataBean) {
-            Date d = new Date(Long.parseLong(dataBean.getPubdate())*1000);
+            Date d = new Date(Long.parseLong(dataBean.getPubdate()) * 1000);
             SimpleDateFormat sdf = new SimpleDateFormat("yyyy-MM-dd");
             String time = sdf.format(d);
             holder.setText(R.id.mBiaoTi, dataBean.getTitle());
@@ -182,8 +184,8 @@ public class XiangQingActivity extends BaseActivity {
             holder.setOnclickListener(R.id.mTiaoZ, new View.OnClickListener() {
                 @Override
                 public void onClick(View v) {
-                    Intent in=new Intent(XiangQingActivity.this,XiangQingErActivity.class);
-                    in.putExtra("id",dataBean.getId());
+                    Intent in = new Intent(XiangQingActivity.this, XiangQingErActivity.class);
+                    in.putExtra("id", dataBean.getId());
                     startActivity(in);
                 }
             });

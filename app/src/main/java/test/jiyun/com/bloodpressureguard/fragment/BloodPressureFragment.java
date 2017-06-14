@@ -10,6 +10,7 @@ import android.widget.Toast;
 
 import java.text.SimpleDateFormat;
 import java.util.ArrayList;
+import java.util.Collections;
 import java.util.Date;
 import java.util.List;
 
@@ -80,12 +81,6 @@ public class BloodPressureFragment extends BaseFragment {
     protected void listener() {
         /*默认第一个按钮是点击的*/
         mBtnA.setChecked(true);
-        mView.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                Toast.makeText(getActivity(), "点击成功", Toast.LENGTH_SHORT).show();
-            }
-        });
 
     }
 
@@ -110,8 +105,6 @@ public class BloodPressureFragment extends BaseFragment {
                 break;
             case R.id.mBtnC:
                 mViewThreeShow();
-//                getMyView(mViewThree);
-//                mViewThree.setShuJu(mGaoYa, mDiYa, mTime);
                 break;
             case R.id.mBtnD:
                 mViewFourShow();
@@ -132,10 +125,11 @@ public class BloodPressureFragment extends BaseFragment {
             case R.id.mView:
                 getTiaoZhuang();
                 break;
-
             case R.id.mViewThree:
+                getTiaoZhuang();
                 break;
             case R.id.mViewFour:
+                getTiaoZhuang();
                 break;
         }
     }
@@ -170,7 +164,7 @@ public class BloodPressureFragment extends BaseFragment {
         String[] split1 = time.split(":");
         int a = Integer.parseInt(split1[0]);
         if (a < 10) {
-            String substring = split1[0].substring(0, 1);
+            String substring = split1[0].substring(1, 2);
             a = Integer.parseInt(substring);
         }
         mTime.add(a);
@@ -202,19 +196,32 @@ public class BloodPressureFragment extends BaseFragment {
         ArrayList<Student> ri = myManager.getYue(yue);
         if (ri.size() <= 0)
             return;
-        Log.d("BloodPressureFragment", "ri.get(0).getDay():" + ri.get(0).getDay());
+        List<Integer> list=new ArrayList();
         for (Student student : ri) {
             int day2 = student.getDay();
-            ArrayList<Student> riA = myManager.getRiA(day2);
+            Log.d("BloodPressureFragment", "day2:" + day2);
+            if (day2 >(day -6)&&day2 < (day + 2)) {
+
+                list.add(day2);
+                Log.d("BloodPressureFragment", "day2:AAA" + day2);
+            }
+
+        }
+
+        /*进行从小到大排序*/
+        Collections.sort(list);
+        for (int i1 = 0; i1 < list.size(); i1++) {
+            ArrayList<Student> riA = myManager.getRiA(list.get(i1));
             Student student1 = riA.get(riA.size() - 1);
             mGaoYa.add(student1.getGaoya());
             mDiYa.add(student1.getDiya());
             int day1 = student1.getDay();
-            Log.d("BloodPressureFragment", "day1:" + day1);
-            mTime.add(day);
+            mTime.add(day1);
+            getMyView(mViewThree);
+            mViewThree.setShuJu(mGaoYa, mDiYa, mTime);
         }
-        getMyView(mViewThree);
-        mViewThree.setShuJu(mGaoYa, mDiYa, mTime);
+
+
     }
 
     /*查询某年的某月的数据*/
@@ -249,7 +256,7 @@ public class BloodPressureFragment extends BaseFragment {
             mDiYa.add(student1.getDiya());
             int day1 = student1.getId();
             Log.d("BloodPressureFragment", "day1:" + day1);
-            mTime.add(12);
+            mTime.add(day1);
         }
         getMyView(mViewFour);
         mViewFour.setShuJu(mGaoYa, mDiYa, mTime);

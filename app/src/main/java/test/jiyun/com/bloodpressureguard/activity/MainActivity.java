@@ -43,6 +43,8 @@ public class MainActivity extends BaseActivity {
     LinearLayout mTitleLayout;
     @Bind(R.id.Frament_Layout)
     FrameLayout FramentLayout;
+    @Bind(R.id.mFinsh)
+    ImageView mFinsh;
 
     /*下方按钮选中的集合*/
     private List<Drawable> mDrawableYesList;
@@ -59,6 +61,7 @@ public class MainActivity extends BaseActivity {
     protected void initView() {
         initShuJu();
         mTitleImage.setVisibility(View.VISIBLE);
+        mFinsh.setVisibility(View.GONE);
     }
 
 
@@ -192,10 +195,5 @@ public class MainActivity extends BaseActivity {
     }
 
 
-    @Override
-    protected void onCreate(Bundle savedInstanceState) {
-        super.onCreate(savedInstanceState);
-        // TODO: add setContentView(...) invocation
-        ButterKnife.bind(this);
-    }
+
 }

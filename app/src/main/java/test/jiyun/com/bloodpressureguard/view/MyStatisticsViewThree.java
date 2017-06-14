@@ -13,6 +13,7 @@ import java.text.SimpleDateFormat;
 import java.util.Date;
 import java.util.List;
 
+
 /**
  * Created by 韩志军 on 2017/6/11.
  */
@@ -36,16 +37,16 @@ public class MyStatisticsViewThree extends View {
     //-------------必须给的资源相关-------------
 
     /*血压记录的时间*/
-    private int[] xjj ={};
+    private int[] xjj = {};
 
     private String[] xStr = {};
     private String[] yStr = new String[]{" ", "40", "80", "120", "160", "200"};
     private String str = "每月血压统计表";
 
     //高压的真实值
-    private int[] yValue={};
+    private int[] yValue = {};
     //低压的真实值
-    private int[] yValuea ={};
+    private int[] yValuea = {};
 
     //-------------画笔相关-------------
     //边框的画笔
@@ -72,6 +73,9 @@ public class MyStatisticsViewThree extends View {
     private int pointColorDY = 0xFF9B9BCD;
     private int day;
 
+    /*画折线的画笔*/
+    private Paint linePaint;
+
 
     public MyStatisticsViewThree(Context context) {
         super(context);
@@ -84,7 +88,7 @@ public class MyStatisticsViewThree extends View {
         String str = formatter.format(curDate);
         day = Integer.parseInt(str);
 
-        xStr = new String[]{day -5+"日", day -4+"日", day -3+"日", day -2+"日", day -1+"日" ,"今天", day +1+"日"};
+        xStr = new String[]{day - 5 + "日", day - 4 + "日", day - 3 + "日", day - 2 + "日", day - 1 + "日", "今天", day + 1 + "日"};
 
     }
 
@@ -94,35 +98,35 @@ public class MyStatisticsViewThree extends View {
 
     public void setShuJu(List gaoya, List diya, List time) {
         /*当集合为空的时候  return*/
-        if (gaoya.size()<=0||diya.size()<=0)
+        if (gaoya.size() <= 0 || diya.size() <= 0)
             return;
         /*高压和低压的长度必须的相同*/
-        if (gaoya.size()!=diya.size()&&gaoya.size()!=time.size())
+        if (gaoya.size() != diya.size() && gaoya.size() != time.size())
             return;
 
         /*将集合里的数据添加到数组里*/  /*高压数据*/
         int size = gaoya.size();
-        int[] a=new int[size];
+        int[] a = new int[size];
         for (int i = 0; i < a.length; i++) {
-            a[i]= (int) gaoya.get(i);
+            a[i] = (int) gaoya.get(i);
         }
         this.yValue = a;
 
         /*将集合里的数据添加到数组里*/  /*低压数据*/
         int size1 = diya.size();
-        int[] b=new int[size1];
+        int[] b = new int[size1];
         for (int i = 0; i < b.length; i++) {
-            b[i]= (int) diya.get(i);
+            b[i] = (int) diya.get(i);
         }
         this.yValuea = b;
 
          /*将集合里的数据添加到数组里*/  /*时间数据*/
         int size2 = time.size();
-        int[] c=new int[size2];
+        int[] c = new int[size2];
         for (int i = 0; i < c.length; i++) {
-            c[i]= (int) time.get(i);
+            c[i] = (int) time.get(i);
         }
-        this.xjj=c;
+        this.xjj = c;
 
         /*请求布局*/
         requestLayout();
@@ -183,6 +187,14 @@ public class MyStatisticsViewThree extends View {
         pointPaint.setStyle(Paint.Style.FILL);
         pointPaint.setColor(pointColor);
 
+        //画折线
+        linePaint = new Paint();
+        linePaint.setColor(0x7f0100ff);
+        linePaint.setAntiAlias(true);
+        linePaint.setStyle(Paint.Style.STROKE);
+        linePaint.setStrokeWidth(2);
+
+
         /*画高压*/
         pointPaintGY = new Paint();
         pointPaintGY.setAntiAlias(true);
@@ -197,6 +209,8 @@ public class MyStatisticsViewThree extends View {
         pointPaintDY.setStrokeWidth(10);
         pointPaintDY.setStyle(Paint.Style.STROKE);
         pointPaintDY.setColor(pointColorDY);
+
+
     }
 
     /**
@@ -261,33 +275,41 @@ public class MyStatisticsViewThree extends View {
 
     /*画高压*/
     private void drawLine(Canvas canvas) {
+        Path mPath = new Path();
         for (int i = 0; i < yValue.length; i++) {
             String s = xStr[0];
             String substring = s.substring(0, xStr[0].length() - 1);
 //            float position = -(yValue[i]/40*ySize);
             float position = -(yValue[i] * 5 * ySize / 200);
-            float positiona = ((xjj[i]-Integer.parseInt(substring))*xSize);
+            float positiona = ((xjj[i] - Integer.parseInt(substring)) * xSize);
+            if (i == 0) {
+                mPath.moveTo(positiona, position);
+            } else {
+                mPath.lineTo(positiona, position);
+            }
+            canvas.drawPath(mPath, linePaint);
             //画黑点
             canvas.drawCircle(positiona, position, 5, pointPaintGY);
-            if (i>0){
-                canvas.drawLine((xjj[i-1]-Integer.parseInt(substring))*xSize,yValue[i-1] * 5 * ySize / 200,(xjj[i]-Integer.parseInt(substring))*xSize,yValue[i] * 5 * ySize / 200,borderPaint);
-            }
         }
     }
 
     /*画低压*/
     private void drawLineA(Canvas canvas) {
+        Path mPath = new Path();
         for (int i = 0; i < yValuea.length; i++) {
             String s = xStr[0];
             String substring = s.substring(0, xStr[0].length() - 1);
             float position = -(yValuea[i] * 5 * ySize / 200);
-            float positiona = ((xjj[i]-Integer.parseInt(substring))*xSize);
+            float positiona = ((xjj[i] - Integer.parseInt(substring)) * xSize);
             Log.d("MyStatisticsViewTwo", "positiona:" + positiona);
+            if (i == 0) {
+                mPath.moveTo(positiona, position);
+            } else {
+                mPath.lineTo(positiona, position);
+            }
+            canvas.drawPath(mPath, linePaint);
             //画黑点
             canvas.drawCircle(positiona, position, 5, pointPaintDY);
-            if (i>0){
-                canvas.drawLine((xjj[i-1]-Integer.parseInt(substring))*xSize,yValue[i-1] * 5 * ySize / 200,(xjj[i]-Integer.parseInt(substring))*xSize,yValue[i] * 5 * ySize / 200,borderPaint);
-            }
         }
     }
 }

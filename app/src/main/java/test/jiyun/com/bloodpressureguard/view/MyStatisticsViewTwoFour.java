@@ -125,7 +125,7 @@ public class MyStatisticsViewTwoFour extends View{
         mHeight = getHeight();
 
         /*设置x轴和y轴之间的间距*/
-        xSize = getWidth() / (5);
+        xSize = getWidth() / (xStr.length);
         ySize = getHeight() / (yStr.length);
         super.onLayout(changed, left, top, right, bottom);
         Log.d("MyStatisticsView", "mWidth:" + mWidth);
@@ -254,7 +254,7 @@ public class MyStatisticsViewTwoFour extends View{
         for (int i = 0; i < yValue.length; i++) {
 //            float position = -(yValue[i]/40*ySize);
             float position = -(yValue[i] * 5 * ySize / 200);
-            float positiona = ((xjj[i] -1)/3*xSize);
+            float positiona = ((xjj[i]-1)*xSize/3);
             //画黑点
             canvas.drawCircle(positiona, position, 5, pointPaintGY);
         }
@@ -265,7 +265,8 @@ public class MyStatisticsViewTwoFour extends View{
         for (int i = 0; i < yValuea.length; i++) {
             float position = -(yValuea[i] * 5 * ySize / 200);
             Log.d("MyStatisticsView", "position:" + position);
-            float positiona = ((xjj[i] -1)/3*xSize);
+            Log.d("MyStatisticsViewTwoFour", "xjj[i]:" + xjj[i]);
+            float positiona = ((xjj[i]-1)*xSize/3);
             //画黑点
             canvas.drawCircle(positiona, position, 5, pointPaintDY);
         }

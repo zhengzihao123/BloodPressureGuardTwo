@@ -7,23 +7,17 @@ import android.widget.TextView;
 import java.text.SimpleDateFormat;
 import java.util.Date;
 import java.util.HashMap;
-import java.util.List;
 import java.util.Map;
 
 import butterknife.Bind;
 import butterknife.ButterKnife;
+import butterknife.OnClick;
 import test.jiyun.com.bloodpressureguard.R;
 import test.jiyun.com.bloodpressureguard.base.BaseActivity;
 import test.jiyun.com.bloodpressureguard.bean.ChangBeanTwo;
-import test.jiyun.com.bloodpressureguard.bean.ChangShiBean;
 import test.jiyun.com.bloodpressureguard.model.callback.ResaultCallBack;
 import test.jiyun.com.bloodpressureguard.model.http.RetrofitUtil;
 
-import static android.R.attr.data;
-import static android.R.attr.tag;
-import static android.R.attr.type;
-import static android.R.attr.version;
-import static test.jiyun.com.bloodpressureguard.R.drawable.zixun;
 
 /**
  * Created by 韩志军 on 2017/6/12.
@@ -65,7 +59,7 @@ public class XiangQingErActivity extends BaseActivity {
         map.put("tag", "zj");
         map.put("sign", "2e0d0887581be1c35794ee4c13b00cae");
         map.put("id", id);
-        map.put("dir","zhuanti_nk");
+        map.put("dir", "zhuanti_nk");
         RetrofitUtil.getInstance().getRetrofit(url, map, new ResaultCallBack() {
             @Override
             public void onSuccess(Object obj) {
@@ -73,7 +67,7 @@ public class XiangQingErActivity extends BaseActivity {
                 ChangBeanTwo.DataBean data = changShiBean.getData();
                 if (data == null)
                     return;
-                Date d = new Date(Long.parseLong(data.getPubdate())*1000);
+                Date d = new Date(Long.parseLong(data.getPubdate()) * 1000);
                 SimpleDateFormat sdf = new SimpleDateFormat("yyyy-MM-dd");
                 String time = sdf.format(d);
                 mBiaoTi.setText(data.getTitle());
@@ -108,10 +102,8 @@ public class XiangQingErActivity extends BaseActivity {
 
     }
 
-    @Override
-    protected void onCreate(Bundle savedInstanceState) {
-        super.onCreate(savedInstanceState);
-        // TODO: add setContentView(...) invocation
-        ButterKnife.bind(this);
+    @OnClick(R.id.mFinsh)
+    public void onViewClicked() {
+        finish();
     }
 }

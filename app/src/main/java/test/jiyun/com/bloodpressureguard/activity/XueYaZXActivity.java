@@ -1,28 +1,25 @@
 package test.jiyun.com.bloodpressureguard.activity;
 
-import android.content.Context;
 import android.content.Intent;
 import android.graphics.drawable.Drawable;
 import android.os.Bundle;
-import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
-import android.widget.AbsListView;
 import android.widget.AdapterView;
 import android.widget.BaseAdapter;
 import android.widget.GridView;
+import android.widget.ImageView;
 import android.widget.LinearLayout;
-import android.widget.PopupWindow;
 import android.widget.RelativeLayout;
 import android.widget.TextView;
-import android.widget.Toast;
 
 import java.util.ArrayList;
 import java.util.List;
 
 import butterknife.Bind;
 import butterknife.ButterKnife;
+import butterknife.OnClick;
 import test.jiyun.com.bloodpressureguard.R;
 import test.jiyun.com.bloodpressureguard.base.BaseActivity;
 
@@ -38,6 +35,8 @@ public class XueYaZXActivity extends BaseActivity {
     TextView mTitle;
     @Bind(R.id.mGridView)
     GridView mGridView;
+    @Bind(R.id.mFinsh)
+    ImageView mFinsh;
 
     private List<Integer> mDrawableList;
     private List<String> mNameList;
@@ -49,14 +48,13 @@ public class XueYaZXActivity extends BaseActivity {
     }
 
 
-
     @Override
     protected void initView() {
         int height = XueYaZXActivity.this.getResources().getDisplayMetrics().heightPixels;
         /*dp转换层px*/
         float density = XueYaZXActivity.this.getResources().getDisplayMetrics().density;
         int v = (int) (70 * density);
-        heightPixels=height-v;
+        heightPixels = height - v;
 
         mDrawableList = new ArrayList<>();
         mNameList = new ArrayList<>();
@@ -86,13 +84,19 @@ public class XueYaZXActivity extends BaseActivity {
         mGridView.setOnItemClickListener(new AdapterView.OnItemClickListener() {
             @Override
             public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
-                Intent in=new Intent(XueYaZXActivity.this,XiangQingActivity.class);
-                in.putExtra("title",mNameList.get(position));
-                in.putExtra("flg",position+1+"");
+                Intent in = new Intent(XueYaZXActivity.this, XiangQingActivity.class);
+                in.putExtra("title", mNameList.get(position));
+                in.putExtra("flg", position + 1 + "");
                 startActivity(in);
             }
         });
 
+    }
+
+
+    @OnClick(R.id.mFinsh)
+    public void onViewClicked() {
+        finish();
     }
 
     class MyAdapter extends BaseAdapter {
@@ -122,13 +126,11 @@ public class XueYaZXActivity extends BaseActivity {
             RelativeLayout relativeLayout = (RelativeLayout) convertView.findViewById(mGrideLayout);
             relativeLayout.setLayoutParams(layoutParams);
             TextView textView = (TextView) convertView.findViewById(R.id.mGrideText);
-//            textView.setLayoutParams(layoutParams);
             textView.setText(mNameList.get(position));
             Drawable drawable = getResources().getDrawable(mDrawableList.get(position));
             drawable.setBounds(0, 0, drawable.getMinimumWidth(),
                     drawable.getMinimumHeight());
             textView.setCompoundDrawables(null, drawable, null, null);
-//            convertView.setLayoutParams(layoutParams);
             return convertView;
         }
 

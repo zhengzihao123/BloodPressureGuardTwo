@@ -15,7 +15,13 @@
         android:visibility="gone"
         android:src="@drawable/persional_normal" />
 
-
+    <ImageView
+        android:id="@+id/mFinsh"
+        android:layout_marginLeft="10dp"
+        android:layout_width="20dp"
+        android:layout_height="20dp"
+        android:layout_gravity="center"
+        android:src="@drawable/fh" />
     <!--所有页面的标题-->
     <TextView
         android:id="@+id/mTitle"

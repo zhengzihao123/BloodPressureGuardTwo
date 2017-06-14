@@ -99,20 +99,6 @@
         android:background="#000" />
 
 
-    <test.jiyun.com.bloodpressureguard.view.MyStatisticsView
-        android:clickable="true"
-        android:id="@+id/mView"
-        android:layout_width="match_parent"
-        android:layout_height="0dp"
-        android:layout_marginBottom="10dp"
-        android:layout_marginLeft="6dp"
-        android:layout_marginRight="6dp"
-        android:layout_marginTop="10dp"
-        android:layout_weight="1"
-        android:background="@drawable/item_tongjitu_back_color" />
-
-
-
     <test.jiyun.com.bloodpressureguard.view.MyStatisticsViewThree
         android:id="@+id/mViewThree"
         android:layout_width="match_parent"
@@ -137,6 +123,18 @@
         android:visibility="gone"
         android:background="@drawable/item_tongjitu_back_color" />
 
+
+    <test.jiyun.com.bloodpressureguard.view.MyStatisticsView
+        android:clickable="true"
+        android:id="@+id/mView"
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        android:layout_marginBottom="10dp"
+        android:layout_marginLeft="6dp"
+        android:layout_marginRight="6dp"
+        android:layout_marginTop="10dp"
+        android:layout_weight="1"
+        android:background="@drawable/item_tongjitu_back_color" />
 
     <LinearLayout
         android:layout_width="match_parent"
