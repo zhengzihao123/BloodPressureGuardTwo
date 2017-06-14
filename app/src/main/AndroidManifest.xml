@@ -1,7 +1,16 @@
 <?xml version="1.0" encoding="utf-8"?>
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
     package="test.jiyun.com.bloodpressureguard">
-<uses-permission android:name="android.permission.INTERNET"/>
+
+    <uses-permission android:name="android.permission.WRITE_EXTERNAL_STORAGE" />
+    <uses-permission android:name="android.permission.INTERNET" />
+    <uses-permission android:name="android.permission.ACCESS_NETWORK_STATE" />
+    <uses-permission android:name="android.permission.ACCESS_WIFI_STATE" />
+    <uses-permission android:name="android.permission.READ_SMS" />
+
+
+    <uses-permission android:name="android.permission.INTERNET" />
+
     <application
         android:name=".App"
         android:allowBackup="true"
@@ -23,6 +32,31 @@
         <activity android:name=".activity.XiangQingActivity"/>
         <activity android:name=".activity.XiangQingErActivity"/>
         <activity android:name=".activity.XueYaJiLuActivity"/>
+        <activity android:name=".activity.ShuJuJiLuActivity" />
+        <activity android:name=".activity.XueYaZXActivity" />
+        <activity android:name=".activity.KeywordActivity" />
+        <activity android:name=".activity.ProvinceActivity" />
+        <activity android:name=".activity.QueryExpertActivity" />
+        <activity android:name=".activity.SearchItemDetail" />
+        <activity android:name=".activity.FreeplusActivity" />
+        <activity android:name=".activity.LoginActivity" />
+        <activity android:name=".activity.My_Collection" />
+        <activity android:name=".activity.My_Data" />
+        <activity android:name=".activity.My_Message" />
+        <activity android:name=".activity.My_Set" />
+        <activity android:name=".activity.huan_num.Huan_PhoneNum" />
+        <activity android:name=".activity.huan_num.Phone_Num" />
+        <activity android:name=".activity.huan_num.YanZheng_Ma" />
+
+
+        <activity android:name=".activity.WenYishengActivity" />
+        <activity android:name=".activity.MianFwiTiWenActivity" />
+        <activity android:name=".activity.XiangQingActivity" />
+        <activity android:name=".activity.XueYaJiLuActivity" />
+
+        <activity android:name=".activity.Collection_XiangQing"></activity>
+        <activity android:name=".activity.huan_num.BangDing_Activity"></activity>
+
     </application>
 
 </manifest>

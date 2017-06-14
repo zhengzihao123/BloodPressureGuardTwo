@@ -4,10 +4,20 @@
     android:layout_height="match_parent"
     android:orientation="vertical">
 
-    <include
-        android:id="@+id/search_recycler_view"
-        layout="@layout/m_refresh_view"
+    <test.jiyun.com.bloodpressureguard.view.MRecyclerView
+        android:id="@+id/m_refresh_view"
         android:layout_width="match_parent"
         android:layout_height="match_parent" />
+
+    <TextView
+        android:id="@+id/no_more_tv"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:gravity="center"
+        android:padding="10dp"
+        android:text="没有更多内容"
+        android:textColor="#333333"
+        android:textSize="@dimen/x34"
+        android:visibility="gone" />
 
 </LinearLayout>

@@ -2,12 +2,12 @@
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    android:gravity="bottom|center_horizontal"
     android:orientation="vertical">
 
     <LinearLayout
         android:layout_width="@dimen/x614"
         android:layout_height="@dimen/y257"
-        android:layout_gravity="center_horizontal"
         android:background="@color/white"
         android:orientation="vertical">
 
@@ -21,23 +21,26 @@
             android:textColor="#666666"
             android:textSize="@dimen/x32" />
 
+        <LinearLayout
 
-        <RadioGroup
             android:layout_width="match_parent"
             android:layout_height="match_parent"
-            android:layout_marginBottom="@dimen/y16"
             android:layout_marginLeft="@dimen/x16"
-            android:layout_marginRight="@dimen/x16">
+            android:layout_marginRight="@dimen/x16"
+            android:orientation="vertical"
+            android:weightSum="2">
 
-
-            <LinearLayout
+            <RadioGroup
+                android:id="@+id/rank_rg_top"
                 android:layout_width="match_parent"
-                android:layout_height="@dimen/y68"
+                android:layout_height="0dp"
                 android:layout_marginBottom="@dimen/y16"
+                android:layout_weight="1"
+                android:orientation="horizontal"
                 android:weightSum="4">
 
                 <RadioButton
-                    android:id="@+id/radioButton"
+                    android:id="@+id/rg_top_one"
                     android:layout_width="0dp"
                     android:layout_height="match_parent"
                     android:layout_marginRight="@dimen/x5"
@@ -51,6 +54,7 @@
                     android:textSize="@dimen/x30" />
 
                 <RadioButton
+                    android:id="@+id/rg_top_two"
                     android:layout_width="0dp"
                     android:layout_height="match_parent"
                     android:layout_marginLeft="@dimen/x5"
@@ -64,6 +68,7 @@
                     android:textSize="@dimen/x30" />
 
                 <RadioButton
+                    android:id="@+id/rg_top_three"
                     android:layout_width="0dp"
                     android:layout_height="match_parent"
                     android:layout_marginLeft="@dimen/x5"
@@ -76,6 +81,7 @@
                     android:textSize="@dimen/x30" />
 
                 <RadioButton
+                    android:id="@+id/rg_top_four"
                     android:layout_width="0dp"
                     android:layout_height="match_parent"
                     android:layout_marginLeft="@dimen/x5"
@@ -87,14 +93,19 @@
                     android:textColor="#333333"
                     android:textSize="@dimen/x30" />
 
-            </LinearLayout>
+            </RadioGroup>
 
-            <LinearLayout
+            <RadioGroup
+                android:id="@+id/rank_rg_bottom"
                 android:layout_width="match_parent"
-                android:layout_height="@dimen/y68"
+                android:layout_height="0dp"
+                android:layout_marginBottom="@dimen/y16"
+                android:layout_weight="1"
+                android:orientation="horizontal"
                 android:weightSum="4">
 
                 <RadioButton
+                    android:id="@+id/rg_bottom_one"
                     android:layout_width="0dp"
                     android:layout_height="match_parent"
                     android:layout_marginRight="@dimen/x5"
@@ -107,6 +118,7 @@
                     android:textSize="@dimen/x30" />
 
                 <RadioButton
+                    android:id="@+id/rg_bottom_two"
                     android:layout_width="0dp"
                     android:layout_height="match_parent"
                     android:layout_marginLeft="@dimen/x5"
@@ -120,6 +132,7 @@
                     android:textSize="@dimen/x30" />
 
                 <RadioButton
+                    android:id="@+id/rg_bottom_three"
                     android:layout_width="0dp"
                     android:layout_height="match_parent"
                     android:layout_marginLeft="@dimen/x5"
@@ -133,6 +146,7 @@
                     android:textSize="@dimen/x30" />
 
                 <RadioButton
+                    android:id="@+id/rg_bottom_four"
                     android:layout_width="0dp"
                     android:layout_height="match_parent"
                     android:layout_marginLeft="@dimen/x5"
@@ -144,22 +158,18 @@
                     android:text="二级丙等"
                     android:textColor="#333333"
                     android:textSize="@dimen/x30" />
-
-            </LinearLayout>
-
-        </RadioGroup>
-
+            </RadioGroup>
+        </LinearLayout>
     </LinearLayout>
 
     <Button
+        android:id="@+id/rank_determine"
         android:layout_width="@dimen/x618"
         android:layout_height="wrap_content"
-        android:layout_gravity="center_horizontal"
         android:layout_marginTop="@dimen/y10"
         android:background="@drawable/doctortitle_btn"
         android:text="确定"
         android:textColor="@color/green"
         android:textSize="@dimen/x36" />
-
 
 </LinearLayout>

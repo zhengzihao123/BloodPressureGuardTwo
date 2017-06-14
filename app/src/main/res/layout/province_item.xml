@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical">
+
+    <TextView
+        android:id="@+id/province_item_tv"
+        android:layout_width="match_parent"
+        android:layout_height="@dimen/y65"
+        android:gravity="center_vertical"
+        android:paddingLeft="@dimen/x40"
+        android:text="item"
+        android:textColor="#343434"
+        android:textSize="@dimen/x34" />
+</LinearLayout>

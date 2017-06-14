@@ -1,6 +1,17 @@
 package test.jiyun.com.bloodpressureguard.activity;
 
+import android.content.Intent;
+import android.os.Bundle;
+import android.view.View;
+import android.widget.ImageView;
+import android.widget.RelativeLayout;
+import android.widget.TextView;
+
+import butterknife.Bind;
+import butterknife.ButterKnife;
+import butterknife.OnClick;
 import test.jiyun.com.bloodpressureguard.R;
+import test.jiyun.com.bloodpressureguard.activity.huan_num.Huan_PhoneNum;
 import test.jiyun.com.bloodpressureguard.base.BaseActivity;
 
 /**
@@ -14,6 +25,17 @@ import test.jiyun.com.bloodpressureguard.base.BaseActivity;
  */
 
 public class My_Set extends BaseActivity {
+    @Bind(R.id.back_img)
+    ImageView backImg;
+    @Bind(R.id.title_text)
+    TextView titleText;
+    @Bind(R.id.ZhangHu)
+    RelativeLayout ZhangHu;
+    @Bind(R.id.Clear)
+    RelativeLayout Clear;
+    @Bind(R.id.GuanYu)
+    RelativeLayout GuanYu;
+
     @Override
     protected int layoutId() {
         return R.layout.my_set;
@@ -21,6 +43,7 @@ public class My_Set extends BaseActivity {
 
     @Override
     protected void initView() {
+        titleText.setText("设置");
 
     }
 
@@ -32,5 +55,32 @@ public class My_Set extends BaseActivity {
     @Override
     protected void listener() {
 
+
+    }
+
+    @Override
+    protected void onCreate(Bundle savedInstanceState) {
+        super.onCreate(savedInstanceState);
+        // TODO: add setContentView(...) invocation
+        ButterKnife.bind(this);
+    }
+
+    @OnClick({R.id.back_img, R.id.title_text, R.id.ZhangHu, R.id.Clear, R.id.GuanYu})
+    public void onViewClicked(View view) {
+        switch (view.getId()) {
+            case R.id.back_img:
+                onBackPressed();
+                break;
+            case R.id.title_text:
+                break;
+            case R.id.ZhangHu:
+                Intent intent = new Intent(getApplicationContext(),Huan_PhoneNum.class);
+                startActivity(intent);
+                break;
+            case R.id.Clear:
+                break;
+            case R.id.GuanYu:
+                break;
+        }
     }
 }

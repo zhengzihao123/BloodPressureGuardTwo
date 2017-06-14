@@ -1,0 +1,42 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical">
+    <include
+        android:id="@+id/message"
+        layout="@layout/people"
+        android:layout_width="match_parent"
+        android:layout_height="@dimen/y80">
+    </include>
+
+    <TextView
+        android:id="@+id/Pnum"
+        android:layout_width="match_parent"
+        android:layout_height="@dimen/x80"
+        android:text="我们已经下发验证码到这个手机好：
+        12345678908"
+        android:gravity="center"
+        />
+
+    <EditText
+        android:id="@+id/mEdiText_YanZhngMa"
+        android:layout_width="match_parent"
+        android:layout_height="@dimen/x100"
+        android:gravity="center"
+        android:layout_marginLeft="@dimen/x40"
+        android:layout_marginRight="@dimen/x40"
+        android:hint="请输入验证码："/>
+
+    <Button
+        android:layout_marginTop="@dimen/x40"
+        android:id="@+id/Button_BangDing"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginRight="@dimen/x40"
+        android:layout_marginLeft="@dimen/x40"
+        android:text="绑定"
+        android:textColor="#ffffff"
+        android:background="#4CBF5B"/>
+
+</LinearLayout>

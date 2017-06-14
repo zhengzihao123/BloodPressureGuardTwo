@@ -14,8 +14,8 @@ import test.jiyun.com.bloodpressureguard.App;
 
 public class UserUtils {
     //用户id获取
-    public static  int getUSERID(){
-        return App.sharedPreferences.getInt(KeyUtils.USERID,0);
+    public static  String  getUSERID(){
+        return App.sharedPreferences.getString (KeyUtils.USERID,"");
     }
     //用户touxaing获取
     public static  String getUSERImage(){
