@@ -1,5 +1,6 @@
 package test.jiyun.com.bloodpressureguard.activity.huan_num;
 
+import android.content.Intent;
 import android.graphics.Color;
 import android.graphics.drawable.ColorDrawable;
 import android.os.Bundle;
@@ -161,12 +162,15 @@ public class YanZheng_Ma extends BaseActivity {
                     @Override
                     public void onSuccess(Object obj) {
                         Phone phoneBean = (Phone) obj;
-                       if (phoneBean.getCode()==1000){
+                       if (phoneBean.getCode()==10000){
                            ToastUtils.showShortToast("验证码已发送");
 //                           Message message = new Message();
 //                           message.what =100;
 //                           message.obj = 120;
 //                           handler.sendMessage(message);
+                           Intent intent = new Intent(getApplicationContext(),BangDing_Activity.class);
+                           intent.putExtra("aaa",editNum.getText().toString().trim());
+                           startActivity(intent);
 
                        }else {
                            ToastUtils.showShortToast("此手机已验证");

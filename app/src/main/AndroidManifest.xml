@@ -39,6 +39,9 @@
         <activity android:name=".activity.XiangQingActivity"></activity>
         <activity android:name=".activity.XueYaJiLuActivity"></activity>
 
+        <activity android:name=".activity.Collection_XiangQing"></activity>
+        <activity android:name=".activity.huan_num.BangDing_Activity"></activity>
+
     </application>
 
 </manifest>

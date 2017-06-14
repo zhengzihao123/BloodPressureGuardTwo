@@ -11,6 +11,7 @@
     </include>
 
     <RelativeLayout
+        android:id="@+id/Wen_Doctor"
         android:layout_width="match_parent"
         android:layout_height="@dimen/y80"
         android:background="#F0F0F0">

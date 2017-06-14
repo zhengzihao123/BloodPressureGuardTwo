@@ -1,5 +1,15 @@
 package test.jiyun.com.bloodpressureguard.activity;
 
+import android.content.Intent;
+import android.os.Bundle;
+import android.view.View;
+import android.widget.ImageView;
+import android.widget.RelativeLayout;
+import android.widget.TextView;
+
+import butterknife.Bind;
+import butterknife.ButterKnife;
+import butterknife.OnClick;
 import test.jiyun.com.bloodpressureguard.R;
 import test.jiyun.com.bloodpressureguard.base.BaseActivity;
 
@@ -14,6 +24,15 @@ import test.jiyun.com.bloodpressureguard.base.BaseActivity;
  */
 
 public class My_Message extends BaseActivity {
+
+    @Bind(R.id.title_text)
+    TextView titleText;
+
+    @Bind(R.id.back_img)
+    ImageView backImg;
+    @Bind(R.id.Wen_Doctor)
+    RelativeLayout WenDoctor;
+
     @Override
     protected int layoutId() {
         return R.layout.my_message;
@@ -21,6 +40,7 @@ public class My_Message extends BaseActivity {
 
     @Override
     protected void initView() {
+        titleText.setText("问医生");
 
     }
 
@@ -32,5 +52,25 @@ public class My_Message extends BaseActivity {
     @Override
     protected void listener() {
 
+    }
+
+    @Override
+    protected void onCreate(Bundle savedInstanceState) {
+        super.onCreate(savedInstanceState);
+        // TODO: add setContentView(...) invocation
+        ButterKnife.bind(this);
+    }
+
+
+    @OnClick({R.id.back_img, R.id.Wen_Doctor})
+    public void onViewClicked(View view) {
+        switch (view.getId()) {
+            case R.id.back_img:
+                onBackPressed();
+                break;
+            case R.id.Wen_Doctor:
+                //Intent intent = new Intent();
+                break;
+        }
     }
 }

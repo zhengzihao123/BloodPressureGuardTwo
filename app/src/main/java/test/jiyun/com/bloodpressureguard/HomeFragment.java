@@ -59,7 +59,7 @@ public class HomeFragment extends BaseFragment {
     @Bind(R.id.My_Set)
     LinearLayout MySet;
     private int width;
-    private boolean isLogin;
+    private boolean isLogin ;
 
 
     @Override
@@ -76,9 +76,16 @@ public class HomeFragment extends BaseFragment {
 
     @Override
     protected void loadData() {
-        isLogin = UserUtils.getZhaungTai();
-        Glide.with(HomeFragment.this).load(UserUtils.getUSERImage()).into(TouXiangImage);
+        Glide.with(HomeFragment.this).load(UserUtils.getUSERImage()).placeholder(R.drawable.login_icon_account).into(TouXiangImage);
         UserNameTextView.setText(UserUtils.getUSERNAME());
+
+
+    }
+
+    @Override
+    public void onResume() {
+        super.onResume();
+        isLogin = UserUtils.getZhaungTai();
 
     }
 

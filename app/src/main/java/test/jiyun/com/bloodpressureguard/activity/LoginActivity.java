@@ -65,6 +65,7 @@ public class LoginActivity extends BaseActivity {
 
     @Override
     protected void loadData() {
+        isLogin = true;
 
     }
 
