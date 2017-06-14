@@ -18,9 +18,11 @@ import java.util.List;
 import butterknife.Bind;
 import butterknife.ButterKnife;
 import butterknife.OnClick;
+import test.jiyun.com.bloodpressureguard.App;
 import test.jiyun.com.bloodpressureguard.R;
 import test.jiyun.com.bloodpressureguard.base.BaseActivity;
 import test.jiyun.com.bloodpressureguard.fragment.BloodPressureFragment;
+import test.jiyun.com.bloodpressureguard.fragment.DoctorOnlineFragment;
 import test.jiyun.com.bloodpressureguard.model.budler.FragmentBuilder;
 import test.jiyun.com.bloodpressureguard.utils.ViewHelper;
 
@@ -64,7 +66,7 @@ public class MainActivity extends BaseActivity {
 
     @Override
     protected void loadData() {
-
+        FragmentBuilder.getInstance(App.activity).startFragment(DoctorOnlineFragment.class).addFragment(R.id.Frament_Layout).builder();
     }
 
     @Override
@@ -81,6 +83,7 @@ public class MainActivity extends BaseActivity {
             case R.id.mTextOne:
                 getController(0);
                 mTitle.setText("医生在线");
+                FragmentBuilder.getInstance(App.activity).startFragment(DoctorOnlineFragment.class).addFragment(R.id.Frament_Layout).builder();
                 break;
             /*血压管理按钮*/
             case R.id.mTextTwo:
@@ -198,4 +201,5 @@ public class MainActivity extends BaseActivity {
         // TODO: add setContentView(...) invocation
         ButterKnife.bind(this);
     }
+
 }

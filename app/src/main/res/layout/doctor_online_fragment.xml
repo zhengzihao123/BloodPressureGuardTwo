@@ -40,6 +40,7 @@
                 android:background="@drawable/online_btn" />
 
             <RelativeLayout
+                android:id="@+id/online_province"
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
                 android:layout_gravity="center_vertical"
@@ -52,6 +53,7 @@
                 android:paddingRight="@dimen/x24">
 
                 <TextView
+                    android:id="@+id/online_province_tv"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_centerVertical="true"
@@ -59,12 +61,12 @@
                     android:textColor="#333333"
                     android:textSize="@dimen/x28" />
 
-                <TextView
+                <ImageView
                     android:layout_width="@dimen/x28"
                     android:layout_height="@dimen/y28"
                     android:layout_alignParentRight="true"
                     android:layout_centerVertical="true"
-                    android:background="@drawable/back" />
+                    android:src="@drawable/back" />
             </RelativeLayout>
         </RelativeLayout>
 
@@ -75,6 +77,7 @@
             android:background="@color/line" />
 
         <RelativeLayout
+            android:id="@+id/online_doctor_title"
             android:layout_width="match_parent"
             android:layout_height="@dimen/y93"
             android:layout_gravity="center_vertical"
@@ -91,12 +94,24 @@
                 android:textColor="#333333"
                 android:textSize="@dimen/x28" />
 
-            <TextView
+            <ImageView
+                android:id="@+id/imageone"
                 android:layout_width="@dimen/x28"
                 android:layout_height="@dimen/y28"
                 android:layout_alignParentRight="true"
                 android:layout_centerVertical="true"
-                android:background="@drawable/back" />
+                android:src="@drawable/back" />
+
+            <TextView
+                android:id="@+id/online_title_tv"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_centerVertical="true"
+                android:layout_marginRight="@dimen/x20"
+                android:layout_toLeftOf="@id/imageone"
+                android:text=""
+                android:textColor="#333333"
+                android:textSize="@dimen/x28" />
         </RelativeLayout>
 
         <TextView
@@ -106,6 +121,7 @@
             android:background="@color/line" />
 
         <RelativeLayout
+            android:id="@+id/online_hospital_rank"
             android:layout_width="match_parent"
             android:layout_height="@dimen/y93"
             android:layout_gravity="center_vertical"
@@ -122,12 +138,24 @@
                 android:textColor="#333333"
                 android:textSize="@dimen/x28" />
 
-            <TextView
+            <ImageView
+                android:id="@+id/imagetwo"
                 android:layout_width="@dimen/x28"
                 android:layout_height="@dimen/y28"
                 android:layout_alignParentRight="true"
                 android:layout_centerVertical="true"
-                android:background="@drawable/back" />
+                android:src="@drawable/back" />
+
+            <TextView
+                android:id="@+id/online_rank_tv"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_centerVertical="true"
+                android:layout_marginRight="@dimen/x20"
+                android:layout_toLeftOf="@id/imagetwo"
+                android:text=""
+                android:textColor="#333333"
+                android:textSize="@dimen/x28" />
         </RelativeLayout>
 
         <TextView
@@ -137,6 +165,7 @@
             android:background="@color/line" />
 
         <RelativeLayout
+            android:id="@+id/online_keyword"
             android:layout_width="match_parent"
             android:layout_height="@dimen/y93"
             android:layout_gravity="center_vertical"
@@ -146,6 +175,7 @@
             android:paddingRight="@dimen/x24">
 
             <TextView
+                android:id="@+id/online_keyword_text"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_centerVertical="true"
@@ -153,12 +183,12 @@
                 android:textColor="#D0D0D0"
                 android:textSize="@dimen/x28" />
 
-            <TextView
+            <ImageView
                 android:layout_width="@dimen/x28"
                 android:layout_height="@dimen/y28"
                 android:layout_alignParentRight="true"
                 android:layout_centerVertical="true"
-                android:background="@drawable/back" />
+                android:src="@drawable/back" />
         </RelativeLayout>
 
         <TextView
@@ -184,7 +214,7 @@
                 android:button="@null" />
 
             <TextView
-                android:id="@+id/nline_jia"
+                android:id="@+id/online_jia"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_centerVertical="true"
@@ -196,13 +226,14 @@
                 android:textSize="@dimen/x28" />
 
             <Button
+                android:id="@+id/online_query"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_alignParentRight="true"
                 android:layout_centerVertical="true"
                 android:layout_marginBottom="@dimen/y18"
                 android:layout_marginTop="@dimen/y18"
-                android:layout_toRightOf="@id/nline_jia"
+                android:layout_toRightOf="@id/online_jia"
                 android:background="@drawable/online_query_btn"
                 android:text="查询专家"
                 android:textColor="@color/white"
@@ -211,7 +242,7 @@
 
         <LinearLayout
             android:layout_width="match_parent"
-            android:layout_height="@dimen/y137"
+            android:layout_height="@dimen/y140"
             android:layout_marginTop="@dimen/y13"
             android:layout_weight="2">
 
@@ -222,7 +253,7 @@
                 android:background="@color/white">
 
                 <Button
-                    android:id="@+id/talk_doctor"
+                    android:id="@+id/online_talk_doctor"
                     android:layout_width="@dimen/y80"
                     android:layout_height="@dimen/y80"
                     android:layout_centerHorizontal="true"
@@ -233,7 +264,7 @@
                 <TextView
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:layout_below="@id/talk_doctor"
+                    android:layout_below="@id/online_talk_doctor"
                     android:layout_centerHorizontal="true"
                     android:text="免费问医生"
                     android:textColor="#999999"
@@ -254,7 +285,7 @@
                 android:background="@color/white">
 
                 <Button
-                    android:id="@+id/doctor_phone"
+                    android:id="@+id/online_doctor_phone"
                     android:layout_width="@dimen/x80"
                     android:layout_height="@dimen/y80"
                     android:layout_centerHorizontal="true"
@@ -265,7 +296,7 @@
                 <TextView
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:layout_below="@id/doctor_phone"
+                    android:layout_below="@id/online_doctor_phone"
                     android:layout_centerHorizontal="true"
                     android:text="健康顾问"
                     android:textColor="#999999"
@@ -291,6 +322,7 @@
                 android:textSize="@dimen/x30" />
 
             <TextView
+                android:id="@+id/online_replace"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_alignParentRight="true"
@@ -301,6 +333,7 @@
                 android:textSize="@dimen/x24" />
 
             <LinearLayout
+                android:id="@+id/online_hot_doctor_group"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_below="@id/hot_doctor"
@@ -316,18 +349,21 @@
                     android:layout_weight="1">
 
                     <TextView
-                        android:id="@+id/text_one"
+                        android:id="@+id/online_text_one"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:layout_alignParentBottom="true"
                         android:layout_centerHorizontal="true"
                         android:layout_marginTop="@dimen/y9"
-                        android:text="张三" />
+                        android:text="张三"
+                        android:textColor="#737373"
+                        android:textSize="@dimen/x24" />
 
                     <ImageView
+                        android:id="@+id/online_image_one"
                         android:layout_width="@dimen/x90"
                         android:layout_height="match_parent"
-                        android:layout_above="@id/text_one"
+                        android:layout_above="@id/online_text_one"
                         android:layout_centerHorizontal="true"
                         android:src="@mipmap/ic_launcher" />
                 </RelativeLayout>
@@ -339,18 +375,21 @@
                     android:layout_weight="1">
 
                     <TextView
-                        android:id="@+id/text_two"
+                        android:id="@+id/online_text_two"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:layout_alignParentBottom="true"
                         android:layout_centerHorizontal="true"
                         android:layout_marginTop="@dimen/y9"
-                        android:text="李四" />
+                        android:text="李四"
+                        android:textColor="#737373"
+                        android:textSize="@dimen/x24" />
 
                     <ImageView
+                        android:id="@+id/online_image_two"
                         android:layout_width="@dimen/x90"
                         android:layout_height="match_parent"
-                        android:layout_above="@id/text_two"
+                        android:layout_above="@id/online_text_two"
                         android:layout_centerHorizontal="true"
                         android:src="@mipmap/ic_launcher" />
                 </RelativeLayout>
@@ -362,18 +401,21 @@
                     android:layout_weight="1">
 
                     <TextView
-                        android:id="@+id/text_three"
+                        android:id="@+id/online_text_three"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:layout_alignParentBottom="true"
                         android:layout_centerHorizontal="true"
                         android:layout_marginTop="@dimen/y9"
-                        android:text="王五" />
+                        android:text="王五"
+                        android:textColor="#737373"
+                        android:textSize="@dimen/x24" />
 
                     <ImageView
+                        android:id="@+id/online_image_three"
                         android:layout_width="@dimen/x90"
                         android:layout_height="match_parent"
-                        android:layout_above="@id/text_three"
+                        android:layout_above="@id/online_text_three"
                         android:layout_centerHorizontal="true"
                         android:src="@mipmap/ic_launcher" />
                 </RelativeLayout>
@@ -384,18 +426,21 @@
                     android:layout_weight="1">
 
                     <TextView
-                        android:id="@+id/text_four"
+                        android:id="@+id/online_text_four"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:layout_alignParentBottom="true"
                         android:layout_centerHorizontal="true"
                         android:layout_marginTop="@dimen/y9"
-                        android:text="候六" />
+                        android:text="候六"
+                        android:textColor="#737373"
+                        android:textSize="@dimen/x24" />
 
                     <ImageView
+                        android:id="@+id/online_image_four"
                         android:layout_width="@dimen/x90"
                         android:layout_height="match_parent"
-                        android:layout_above="@id/text_four"
+                        android:layout_above="@id/online_text_four"
                         android:layout_centerHorizontal="true"
                         android:src="@mipmap/ic_launcher" />
                 </RelativeLayout>
