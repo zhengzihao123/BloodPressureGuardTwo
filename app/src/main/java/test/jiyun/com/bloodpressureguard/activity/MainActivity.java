@@ -162,6 +162,7 @@ public class MainActivity extends BaseActivity {
                 ViewHelper.setTranslationX(mContent, drawerView.getMeasuredWidth() * slideOffset);
                 mContent.invalidate();
 
+                /*全部滑动出来是 1*/
                 if (slideOffset > slide) {
                     mTitleLayout.setBackgroundColor(Color.parseColor("#ffffff"));
                     mTitleImage.setImageResource(R.drawable.persional_press);

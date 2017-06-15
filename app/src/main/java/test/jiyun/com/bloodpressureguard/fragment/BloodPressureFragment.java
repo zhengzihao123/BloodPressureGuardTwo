@@ -1,12 +1,19 @@
 package test.jiyun.com.bloodpressureguard.fragment;
 
 import android.content.Intent;
+import android.graphics.drawable.ColorDrawable;
+import android.os.Bundle;
 import android.util.Log;
+import android.view.Gravity;
+import android.view.LayoutInflater;
 import android.view.View;
+import android.view.ViewGroup;
 import android.widget.ImageView;
+import android.widget.LinearLayout;
+import android.widget.PopupWindow;
 import android.widget.RadioButton;
+import android.widget.RelativeLayout;
 import android.widget.TextView;
-import android.widget.Toast;
 
 import java.text.SimpleDateFormat;
 import java.util.ArrayList;
@@ -15,17 +22,18 @@ import java.util.Date;
 import java.util.List;
 
 import butterknife.Bind;
+import butterknife.ButterKnife;
 import butterknife.OnClick;
 import test.jiyun.com.bloodpressureguard.R;
 import test.jiyun.com.bloodpressureguard.activity.ShuJuJiLuActivity;
 import test.jiyun.com.bloodpressureguard.activity.WenYishengActivity;
 import test.jiyun.com.bloodpressureguard.activity.XueYaJiLuActivity;
 import test.jiyun.com.bloodpressureguard.activity.XueYaZXActivity;
+import test.jiyun.com.bloodpressureguard.activity.ZiDongActivity;
 import test.jiyun.com.bloodpressureguard.base.BaseFragment;
 import test.jiyun.com.bloodpressureguard.sq.MyManager;
 import test.jiyun.com.bloodpressureguard.sq.Student;
 import test.jiyun.com.bloodpressureguard.view.MyStatisticsView;
-import test.jiyun.com.bloodpressureguard.view.MyStatisticsViewTwo;
 import test.jiyun.com.bloodpressureguard.view.MyStatisticsViewThree;
 import test.jiyun.com.bloodpressureguard.view.MyStatisticsViewTwoFour;
 
@@ -56,11 +64,18 @@ public class BloodPressureFragment extends BaseFragment {
     MyStatisticsViewThree mViewThree;
     @Bind(R.id.mViewFour)
     MyStatisticsViewTwoFour mViewFour;
+    @Bind(R.id.mLL)
+    LinearLayout mLL;
 
     private List mGaoYa;/*高压集合*/
     private List mDiYa;/*低压集合*/
     private List mTime;
     private MyManager myManager;
+
+    private PopupWindow mPopup;
+    private TextView mTextSD, mTextZD;
+    private RelativeLayout mRelativeLayout;
+
 
     @Override
     protected int ViewID() {
@@ -82,6 +97,8 @@ public class BloodPressureFragment extends BaseFragment {
         /*默认第一个按钮是点击的*/
         mBtnA.setChecked(true);
 
+        getMyPopup();
+
     }
 
     @Override
@@ -97,8 +114,7 @@ public class BloodPressureFragment extends BaseFragment {
         switch (view.getId()) {
             /*上传血压数据*/
             case R.id.imageView:
-                Intent in = new Intent(getActivity(), ShuJuJiLuActivity.class);
-                getActivity().startActivity(in);
+                mPopup.showAtLocation(mLL, 0, 0, Gravity.CENTER);
                 break;
             case R.id.mBtnA:
                 mViewOneShow();
@@ -196,11 +212,11 @@ public class BloodPressureFragment extends BaseFragment {
         ArrayList<Student> ri = myManager.getYue(yue);
         if (ri.size() <= 0)
             return;
-        List<Integer> list=new ArrayList();
+        List<Integer> list = new ArrayList();
         for (Student student : ri) {
             int day2 = student.getDay();
             Log.d("BloodPressureFragment", "day2:" + day2);
-            if (day2 >(day -6)&&day2 < (day + 2)) {
+            if (day2 > (day - 6) && day2 < (day + 2)) {
 
                 list.add(day2);
                 Log.d("BloodPressureFragment", "day2:AAA" + day2);
@@ -275,4 +291,39 @@ public class BloodPressureFragment extends BaseFragment {
         Intent in = new Intent(getActivity(), XueYaJiLuActivity.class);
         startActivity(in);
     }
+
+    public void getMyPopup() {
+        View view = LayoutInflater.from(getActivity()).inflate(R.layout.popup_item_shuju, null);
+        mPopup = new PopupWindow(view, ViewGroup.LayoutParams.MATCH_PARENT, ViewGroup.LayoutParams.MATCH_PARENT);
+        mPopup.setOutsideTouchable(true);
+        mPopup.setBackgroundDrawable(new ColorDrawable());
+        mTextSD = (TextView) view.findViewById(R.id.mTextSD);
+        /*手动录入数据*/
+        mTextSD.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent in = new Intent(getActivity(), ShuJuJiLuActivity.class);
+                getActivity().startActivity(in);
+            }
+        });
+        mTextZD = (TextView) view.findViewById(R.id.mTextZD);
+        /*自动测量*/
+        mTextZD.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent in = new Intent(getActivity(), ZiDongActivity.class);
+                getActivity().startActivity(in);
+            }
+        });
+        mRelativeLayout = (RelativeLayout) view.findViewById(R.id.mXiaoS);
+        mRelativeLayout.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                mPopup.dismiss();
+            }
+        });
+
+    }
+
+
 }

@@ -5,6 +5,8 @@ import android.graphics.Canvas;
 import android.graphics.Paint;
 import android.graphics.Path;
 import android.graphics.Rect;
+import android.icu.util.Measure;
+import android.os.Message;
 import android.util.AttributeSet;
 import android.util.Log;
 import android.view.View;
@@ -12,6 +14,8 @@ import android.view.View;
 import java.text.SimpleDateFormat;
 import java.util.Date;
 import java.util.List;
+
+import static android.os.Build.VERSION_CODES.M;
 
 
 /**
@@ -146,6 +150,12 @@ public class MyStatisticsViewThree extends View {
         Log.d("MyStatisticsView", "mHeight:" + mHeight);
     }
 
+    @Override
+    protected void onMeasure(int widthMeasureSpec, int heightMeasureSpec) {
+        super.onMeasure(widthMeasureSpec, heightMeasureSpec);
+        setMeasuredDimension(widthMeasureSpec,heightMeasureSpec);
+        int mode = MeasureSpec.getMode(widthMeasureSpec);
+    }
 
     @Override
     protected void onDraw(Canvas canvas) {

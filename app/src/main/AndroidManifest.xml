@@ -25,15 +25,13 @@
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
-        <activity android:name=".activity.ShuJuJiLuActivity"/>
-        <activity android:name=".activity.XueYaZXActivity"/>
-        <activity android:name=".activity.WenYishengActivity"/>
-        <activity android:name=".activity.MianFwiTiWenActivity"/>
-        <activity android:name=".activity.XiangQingActivity"/>
-        <activity android:name=".activity.XiangQingErActivity"/>
-        <activity android:name=".activity.XueYaJiLuActivity"/>
         <activity android:name=".activity.ShuJuJiLuActivity" />
         <activity android:name=".activity.XueYaZXActivity" />
+        <activity android:name=".activity.WenYishengActivity" />
+        <activity android:name=".activity.MianFwiTiWenActivity" />
+        <activity android:name=".activity.XiangQingActivity" />
+        <activity android:name=".activity.XiangQingErActivity" />
+        <activity android:name=".activity.XueYaJiLuActivity" />
         <activity android:name=".activity.KeywordActivity" />
         <activity android:name=".activity.ProvinceActivity" />
         <activity android:name=".activity.QueryExpertActivity" />
@@ -47,12 +45,8 @@
         <activity android:name=".activity.huan_num.Huan_PhoneNum" />
         <activity android:name=".activity.huan_num.Phone_Num" />
         <activity android:name=".activity.huan_num.YanZheng_Ma" />
+        <activity android:name=".activity.ZiDongActivity" />
 
-
-        <activity android:name=".activity.WenYishengActivity" />
-        <activity android:name=".activity.MianFwiTiWenActivity" />
-        <activity android:name=".activity.XiangQingActivity" />
-        <activity android:name=".activity.XueYaJiLuActivity" />
 
         <activity android:name=".activity.Collection_XiangQing"></activity>
         <activity android:name=".activity.huan_num.BangDing_Activity"></activity>
