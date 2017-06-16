@@ -8,7 +8,7 @@
     <TextView
         android:layout_width="match_parent"
         android:layout_height="@dimen/y74"
-        android:paddingLeft="@dimen/y23"
+        android:paddingLeft="@dimen/x23"
         android:paddingTop="@dimen/y28"
         android:text="基本资料"
         android:textColor="#E1E1DE"
@@ -31,15 +31,18 @@
             android:textSize="@dimen/x34" />
 
         <EditText
+            android:id="@+id/plus_name"
             android:layout_width="match_parent"
-            android:layout_height="wrap_content"
+            android:layout_height="@dimen/y60"
             android:layout_centerVertical="true"
             android:layout_marginLeft="@dimen/x21"
             android:layout_marginRight="@dimen/x21"
             android:layout_toRightOf="@id/text_one"
-            android:gravity="end"
+            android:background="@drawable/keyword_bg_et"
+            android:gravity="center_vertical|end"
             android:hint="请填写真实姓名"
-            android:textColorHint="#D3D3D3" />
+            android:textColorHint="#D3D3D3"
+            android:textSize="@dimen/x28" />
 
     </RelativeLayout>
 
@@ -60,13 +63,16 @@
             android:textSize="@dimen/x34" />
 
         <EditText
+            android:id="@+id/plus_province"
             android:layout_width="match_parent"
-            android:layout_height="wrap_content"
+            android:layout_height="@dimen/y60"
             android:layout_centerVertical="true"
             android:layout_marginLeft="@dimen/x21"
             android:layout_marginRight="@dimen/x21"
             android:layout_toRightOf="@id/text_two"
-            android:gravity="end" />
+            android:background="@drawable/keyword_bg_et"
+            android:gravity="center_vertical|end"
+            android:textSize="@dimen/x28" />
     </RelativeLayout>
 
     <RelativeLayout
@@ -86,15 +92,18 @@
             android:textSize="@dimen/x34" />
 
         <EditText
+            android:id="@+id/plus_ip"
             android:layout_width="match_parent"
-            android:layout_height="wrap_content"
+            android:layout_height="@dimen/y60"
             android:layout_centerVertical="true"
             android:layout_marginLeft="@dimen/x21"
             android:layout_marginRight="@dimen/x21"
             android:layout_toRightOf="@id/text_three"
-            android:gravity="end"
+            android:background="@drawable/keyword_bg_et"
+            android:gravity="center_vertical|end"
             android:hint="必填"
-            android:textColorHint="#D3D3D3" />
+            android:textColorHint="#D3D3D3"
+            android:textSize="@dimen/x28" />
 
     </RelativeLayout>
 
@@ -115,18 +124,22 @@
             android:textSize="@dimen/x34" />
 
         <EditText
+            android:id="@+id/plus_phone_number"
             android:layout_width="match_parent"
-            android:layout_height="wrap_content"
+            android:layout_height="@dimen/y60"
             android:layout_centerVertical="true"
             android:layout_marginLeft="@dimen/x21"
             android:layout_marginRight="@dimen/x21"
             android:layout_toRightOf="@id/text_four"
-            android:gravity="end"
+            android:background="@drawable/keyword_bg_et"
+            android:gravity="center_vertical|end"
             android:hint="加号凭证短信将发送至此号码"
-            android:textColorHint="#D3D3D3" />
+            android:textColorHint="#D3D3D3"
+            android:textSize="@dimen/x28" />
     </RelativeLayout>
 
     <Button
+        android:id="@+id/plus_btn"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_marginLeft="@dimen/x21"

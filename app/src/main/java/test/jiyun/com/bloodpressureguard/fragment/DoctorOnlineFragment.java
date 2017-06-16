@@ -30,6 +30,7 @@ import test.jiyun.com.bloodpressureguard.R;
 import test.jiyun.com.bloodpressureguard.activity.KeywordActivity;
 import test.jiyun.com.bloodpressureguard.activity.ProvinceActivity;
 import test.jiyun.com.bloodpressureguard.activity.QueryExpertActivity;
+import test.jiyun.com.bloodpressureguard.activity.SearchItemDetail;
 import test.jiyun.com.bloodpressureguard.base.BaseFragment;
 import test.jiyun.com.bloodpressureguard.model.bean.HotDoctorBean;
 import test.jiyun.com.bloodpressureguard.model.biz.DoctorOnline;
@@ -119,13 +120,23 @@ public class DoctorOnlineFragment extends BaseFragment {
 
     @Override
     protected void loadData() {
+
+    }
+
+    @Override
+    protected void listener() {
+        loadList();
+    }
+
+    private void loadList() {
         progressDialog.show();
         doctorOnline.hotDoctor(pageNum, new ResaultCallBack() {
             @Override
             public void onSuccess(Object obj) {
+                onlineHotDoctorGroup.setVisibility(View.VISIBLE);
                 progressDialog.dismiss();
                 HotDoctorBean hotDoctorBean = (HotDoctorBean) obj;
-                List<HotDoctorBean.DataBean> data = hotDoctorBean.getData();
+                final List<HotDoctorBean.DataBean> data = hotDoctorBean.getData();
                 if (data.size() > 0) {
                     for (int i = 0; i < data.size(); i++) {
                         final int num = i;
@@ -140,7 +151,17 @@ public class DoctorOnlineFragment extends BaseFragment {
                         view.setOnClickListener(new View.OnClickListener() {
                             @Override
                             public void onClick(View v) {
-                                showToast(String.valueOf(num));
+                                Intent intent = new Intent(App.activity, SearchItemDetail.class);
+                                intent.putExtra("imgUrl", data.get(num).getApp_image());
+                                intent.putExtra("name", data.get(num).getName());
+                                intent.putExtra("expert", data.get(num).getTeach());
+                                intent.putExtra("location", data.get(num).getHospital());
+                                intent.putExtra("type", data.get(num).getDepart());
+                                intent.putExtra("title", data.get(num).getTitle());
+                                intent.putExtra("expert_id", data.get(num).getExpert_id());
+                                intent.putExtra("doctor_id", data.get(num).getDocument_id());
+                                intent.putExtra("content", data.get(num).getGoodat());
+                                startActivity(intent);
                             }
                         });
                     }
@@ -164,11 +185,6 @@ public class DoctorOnlineFragment extends BaseFragment {
                 showToast(errorParams);
             }
         }, HotDoctorBean.class);
-    }
-
-    @Override
-    protected void listener() {
-
     }
 
     @OnClick({R.id.online_location, R.id.online_province, R.id.online_doctor_title, R.id.online_hospital_rank, R.id.online_keyword, R.id.online_query, R.id.online_talk_doctor, R.id.online_doctor_phone, R.id.online_replace})
@@ -220,53 +236,63 @@ public class DoctorOnlineFragment extends BaseFragment {
             case R.id.online_doctor_phone:
                 break;
             case R.id.online_replace:
-                progressDialog.show();
                 pageNum++;
-                doctorOnline.hotDoctor(pageNum, new ResaultCallBack() {
-                    @Override
-                    public void onSuccess(Object obj) {
-                        progressDialog.dismiss();
-                        HotDoctorBean hotDoctorBean = (HotDoctorBean) obj;
-                        List<HotDoctorBean.DataBean> data = hotDoctorBean.getData();
-                        if (data.size() > 0) {
-                            for (int i = 0; i < data.size(); i++) {
-                                final int num = i;
-                                RelativeLayout view = (RelativeLayout) onlineHotDoctorGroup.getChildAt(i);
-                                TextView text = (TextView) view.getChildAt(0);
-                                ImageView image = (ImageView) view.getChildAt(1);
-                                text.setText(data.get(i).getName());
-                                Glide.with(App.activity)
-                                        .load(data.get(i).getApp_image())
-                                        .diskCacheStrategy(DiskCacheStrategy.ALL)
-                                        .into(image);
-                                view.setOnClickListener(new View.OnClickListener() {
-                                    @Override
-                                    public void onClick(View v) {
-                                        showToast(String.valueOf(num));
-                                    }
-                                });
-                            }
-                        }
-                    }
-
-                    @Override
-                    public void onError(String errorMsg) {
-                        progressDialog.dismiss();
-                        showToast(errorMsg);
-                    }
-
-                    @Override
-                    public void notNet(String netData) {
-                        progressDialog.dismiss();
-                        showToast(netData);
-                    }
-
-                    @Override
-                    public void onErrorParams(String errorParams) {
-                        progressDialog.dismiss();
-                        showToast(errorParams);
-                    }
-                }, HotDoctorBean.class);
+                loadList();
+//                doctorOnline.hotDoctor(pageNum, new ResaultCallBack() {
+//                    @Override
+//                    public void onSuccess(Object obj) {
+//                        progressDialog.dismiss();
+//                        HotDoctorBean hotDoctorBean = (HotDoctorBean) obj;
+//                        final List<HotDoctorBean.DataBean> data = hotDoctorBean.getData();
+//                        if (data.size() > 0) {
+//                            for (int i = 0; i < data.size(); i++) {
+//                                final int num = i;
+//                                RelativeLayout view = (RelativeLayout) onlineHotDoctorGroup.getChildAt(i);
+//                                TextView text = (TextView) view.getChildAt(0);
+//                                ImageView image = (ImageView) view.getChildAt(1);
+//                                text.setText(data.get(i).getName());
+//                                Glide.with(App.activity)
+//                                        .load(data.get(i).getApp_image())
+//                                        .diskCacheStrategy(DiskCacheStrategy.ALL)
+//                                        .into(image);
+//                                view.setOnClickListener(new View.OnClickListener() {
+//                                    @Override
+//                                    public void onClick(View v) {
+//                                        Intent intent = new Intent(App.activity, SearchItemDetail.class);
+//                                        intent.putExtra("imgUrl", data.get(num).getApp_image());
+//                                        intent.putExtra("name", data.get(num).getName());
+//                                        intent.putExtra("expert", data.get(num).getTeach());
+//                                        intent.putExtra("location", data.get(num).getHospital());
+//                                        intent.putExtra("type", data.get(num).getDepart());
+//                                        intent.putExtra("title", data.get(num).getTitle());
+//                                        intent.putExtra("expert_id", data.get(num).getExpert_id());
+//                                        intent.putExtra("doctor_id", data.get(num).getDocument_id());
+//                                        intent.putExtra("content", data.get(num).getGoodat());
+//                                        startActivity(intent);
+//                                    }
+//                                });
+//                            }
+//                        }
+//                    }
+//
+//                    @Override
+//                    public void onError(String errorMsg) {
+//                        progressDialog.dismiss();
+//                        showToast(errorMsg);
+//                    }
+//
+//                    @Override
+//                    public void notNet(String netData) {
+//                        progressDialog.dismiss();
+//                        showToast(netData);
+//                    }
+//
+//                    @Override
+//                    public void onErrorParams(String errorParams) {
+//                        progressDialog.dismiss();
+//                        showToast(errorParams);
+//                    }
+//                }, HotDoctorBean.class);
                 break;
         }
     }

@@ -1,5 +1,7 @@
 package test.jiyun.com.bloodpressureguard.model.http;
 
+import android.util.Log;
+
 import com.google.gson.Gson;
 
 import java.io.IOException;
@@ -55,7 +57,13 @@ public class RetrofitUtil {
                             App.activity.runOnUiThread(new Runnable() {
                                 @Override
                                 public void run() {
-                                    callBack.onSuccess(getGeneric(body, tClass));
+                                    Object generic = getGeneric(body, tClass);
+                                    if (generic != null) {
+                                        callBack.onSuccess(generic);
+                                    } else {
+                                        callBack.onError("解析对象为空");
+                                    }
+
                                 }
                             });
                         } catch (IOException e) {
@@ -174,7 +182,14 @@ public class RetrofitUtil {
 //    }
 
     private Object getGeneric(String jsonData, Class c) {
+
+        if (jsonData.contains("\"schedule\":\"\"")) {
+            jsonData = jsonData.replace("\"schedule\":\"\"",
+                    "\"schedule\": {\"rdtime\":[],\"num\":{}}");
+        }
+        Log.i("jsonData", jsonData);
         Gson gson = new Gson();
         return gson.fromJson(jsonData, c);
     }
+
 }

@@ -337,9 +337,10 @@
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_below="@id/hot_doctor"
-                android:layout_marginLeft="@dimen/x56"
-                android:layout_marginRight="@dimen/x56"
+                android:layout_marginLeft="@dimen/x20"
+                android:layout_marginRight="@dimen/x20"
                 android:layout_marginTop="@dimen/y16"
+                android:visibility="gone"
                 android:weightSum="4">
 
                 <RelativeLayout

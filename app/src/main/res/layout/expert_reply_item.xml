@@ -28,4 +28,10 @@
         android:text="低压高2年"
         android:textColor="#999999"
         android:textSize="@dimen/x34" />
+
+    <TextView
+        android:layout_width="match_parent"
+        android:layout_height="0.5dp"
+        android:layout_marginTop="@dimen/y20"
+        android:background="#666666" />
 </LinearLayout>

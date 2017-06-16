@@ -1,5 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:id="@+id/disease_top"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:background="@color/color_all_bg"
@@ -15,6 +16,7 @@
         android:textSize="@dimen/x30" />
 
     <RelativeLayout
+        android:id="@+id/disease_one"
         android:layout_width="match_parent"
         android:layout_height="@dimen/y98"
         android:background="@color/white">
@@ -38,6 +40,7 @@
             android:gravity="center_vertical">
 
             <TextView
+                android:id="@+id/disease_tv_one"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_marginRight="@dimen/x21"
@@ -54,6 +57,7 @@
     </RelativeLayout>
 
     <RelativeLayout
+        android:id="@+id/disease_two"
         android:layout_width="match_parent"
         android:layout_height="@dimen/y98"
         android:background="@color/white">
@@ -77,6 +81,7 @@
             android:gravity="center_vertical">
 
             <TextView
+                android:id="@+id/disease_tv_two"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_marginRight="@dimen/x21"
@@ -93,6 +98,7 @@
     </RelativeLayout>
 
     <RelativeLayout
+        android:id="@+id/disease_three"
         android:layout_width="match_parent"
         android:layout_height="@dimen/y98"
         android:background="@color/white">
@@ -116,6 +122,7 @@
             android:gravity="center_vertical">
 
             <TextView
+                android:id="@+id/disease_tv_three"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_marginRight="@dimen/x21"
@@ -132,6 +139,7 @@
     </RelativeLayout>
 
     <Button
+        android:id="@+id/disease_finish"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_marginLeft="@dimen/x21"
@@ -143,6 +151,7 @@
         android:textSize="@dimen/x36" />
 
     <Button
+        android:id="@+id/disease_push"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_marginLeft="@dimen/x21"
