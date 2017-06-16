@@ -56,7 +56,6 @@ public class VisitingScheduleFragment extends BaseFragment {
                 progressDialog.dismiss();
                 FreePlusDetailBean detailBean = (FreePlusDetailBean) obj;
                 List<FreePlusDetailBean.DataBean.ScheduleBean.RdtimeBean> rdtime = detailBean.getData().getSchedule().getRdtime();
-
                 if (rdtime.size() > 0) {
                     for (FreePlusDetailBean.DataBean.ScheduleBean.RdtimeBean rdtimeBean : rdtime) {
                         int ss = Integer.parseInt(rdtimeBean.getWeek());
@@ -68,7 +67,6 @@ public class VisitingScheduleFragment extends BaseFragment {
                                     childAt1.setText("特需");
                                 else
                                     childAt1.setText("专家");
-
                                 childAt1.setBackgroundColor(Color.parseColor("#16DCC7"));
                                 break;
                             case "2":

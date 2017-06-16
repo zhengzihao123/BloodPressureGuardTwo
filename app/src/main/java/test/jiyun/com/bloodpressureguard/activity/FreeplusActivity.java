@@ -1,6 +1,7 @@
 package test.jiyun.com.bloodpressureguard.activity;
 
 import android.app.ProgressDialog;
+import android.content.Intent;
 import android.text.TextUtils;
 import android.view.View;
 import android.view.ViewGroup;
@@ -183,10 +184,24 @@ public class FreeplusActivity extends BaseActivity {
                 case "上午":
                     holder.textMorningTop.setText(list.get(position).getMsg());
                     holder.textMorningBottom.setText(list.get(position).getSurplus());
+                    holder.morningLL.setOnClickListener(new View.OnClickListener() {
+                        @Override
+                        public void onClick(View v) {
+                            Intent intent = new Intent(App.activity, YuyueActivity.class);
+                            startActivity(intent);
+                        }
+                    });
                     break;
                 case "下午":
                     holder.textAfternoonTop.setText(list.get(position).getMsg());
                     holder.textAfternoonBottom.setText(list.get(position).getSurplus());
+                    holder.afternoonLL.setOnClickListener(new View.OnClickListener() {
+                        @Override
+                        public void onClick(View v) {
+                            Intent intent = new Intent(App.activity, YuyueActivity.class);
+                            startActivity(intent);
+                        }
+                    });
                     break;
             }
             return convertView;
