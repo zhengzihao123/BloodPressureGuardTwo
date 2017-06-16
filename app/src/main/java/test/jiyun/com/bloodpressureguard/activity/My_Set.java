@@ -80,6 +80,8 @@ public class My_Set extends BaseActivity {
             case R.id.Clear:
                 break;
             case R.id.GuanYu:
+                Intent intent1 = new Intent(this,XueYaWeiShiActivity.class);
+                startActivity(intent1);
                 break;
         }
     }

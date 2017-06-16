@@ -95,6 +95,8 @@ public class Huan_PhoneNum extends BaseActivity {
                 editor.commit();
                 ToastUtils.showShortToast("已经退出登录！");
 
+                finish();
+
                 break;
             case R.id.phone_num:
                 break;

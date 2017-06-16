@@ -1,0 +1,80 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical">
+
+    <include
+        android:id="@+id/message"
+        layout="@layout/people"
+        android:layout_width="match_parent"
+        android:layout_height="@dimen/y80"></include>
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="@dimen/y230"
+        android:orientation="vertical">
+
+        <RelativeLayout
+            android:id="@+id/pingFen"
+            android:layout_width="match_parent"
+            android:layout_height="@dimen/y93"
+            android:background="@drawable/backgroad_view"
+            android:clickable="true">
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_centerVertical="true"
+                android:layout_marginLeft="@dimen/x20"
+                android:text="去评分"
+                android:textColor="#cac3c3"
+                android:textSize="@dimen/x32" />
+
+            <ImageView
+                android:id="@+id/JianTou4"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_alignParentRight="true"
+                android:layout_centerVertical="true"
+                android:src="@drawable/arrow_right" />
+
+        </RelativeLayout>
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="@dimen/y15"
+            android:background="#e4e4e4"></LinearLayout>
+
+        <RelativeLayout
+            android:id="@+id/YiJian_FanKui"
+            android:layout_width="match_parent"
+            android:layout_height="@dimen/y93"
+            android:background="@drawable/backgroad_view"
+            android:clickable="true">
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_centerVertical="true"
+                android:layout_marginLeft="@dimen/x20"
+                android:text="意见反馈"
+                android:textColor="#cac3c3"
+                android:textSize="@dimen/x32" />
+
+            <ImageView
+                android:id="@+id/JianTou"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_alignParentRight="true"
+                android:layout_centerVertical="true"
+                android:src="@drawable/arrow_right" />
+
+        </RelativeLayout>
+
+        <ImageView
+            android:layout_width="match_parent"
+            android:layout_height="@dimen/x1"
+            android:background="#c0bebe" />
+    </LinearLayout>
+</LinearLayout>
