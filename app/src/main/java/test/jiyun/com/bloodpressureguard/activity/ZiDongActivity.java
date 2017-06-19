@@ -114,9 +114,9 @@ public class ZiDongActivity extends BaseActivity {
                     getDongHua(g, d);
 
                     if (g >= 170)
-                        handler.sendEmptyMessageDelayed(4, 5000);
+                        handler.sendEmptyMessageDelayed(4, 3000);
                     else
-                        handler.sendEmptyMessageDelayed(1, 200);
+                        handler.sendEmptyMessageDelayed(1, 140);
                     break;
                 case 2:
                     Log.d("ZiDongActivity", "走了");
@@ -124,41 +124,48 @@ public class ZiDongActivity extends BaseActivity {
                     d -= 2;
                     getDongHua(g, d);
                     if (g <= 140) {
-                        handler.sendEmptyMessageDelayed(7, 600);
                         a = g;
                         b = d;
                     } else
-                        handler.sendEmptyMessageDelayed(2, 1500);
+                        handler.sendEmptyMessageDelayed(2, 1100);
                     break;
                 case 3:
                     Toast.makeText(ZiDongActivity.this, "测量完成", Toast.LENGTH_SHORT).show();
                     break;
                 case 4:
-                    g -= 2;
-                    d -= 2;
+                    g -= 4;
+                    d -= 4;
                     getDongHua(g, d);
 
                     if (g <= 150)
-                        handler.sendEmptyMessageDelayed(2, 2000);
+                        handler.sendEmptyMessageDelayed(2, 3000);
                     else
-                        handler.sendEmptyMessageDelayed(4, 1500);
+                        handler.sendEmptyMessageDelayed(4, 1700);
                     break;
                 case 7:
-                    if (mA > 0 && mB > 0 && mC > 0) {
-                        mXL.setText("心率 /"+" "+mC);
-                        Log.d("ZiDongActivity", "的点点滴滴");
-                        float i = (float) (a - mA) / 10;
-                        float i1 = (float) (b - mB) / 10;
-                        Log.d("ZiDongActivity", "mA:" + mA);
-                        Log.d("ZiDongActivity", "mB:" + mB);
+                    mXL.setText("心率 /" + " " + mC);
+                    Log.d("ZiDongActivity", "的点点滴滴");
+                    float i = (float) (a - mA) / 10;
+                    float i1 = (float) (b - mB) / 10;
+                    Log.d("ZiDongActivity", "mA:" + mA);
+                    Log.d("ZiDongActivity", "mB:" + mB);
 
-                        gg = gg - i;
-                        dd = dd - i1;
-                        getDongHuaA(gg, dd);
-                        if ((int) gg >= mA && (int) dd > mB) {
-                            Log.d("ZiDongActivity", "的点点滴滴dddddd");
-                            handler.sendEmptyMessageDelayed(7, 350);
-                        }
+                    gg = gg - i;
+                    dd = dd - i1;
+                    getDongHuaA(gg, dd);
+                    if ((int) gg >= mA && (int) dd > mB) {
+                        Log.d("ZiDongActivity", "的点点滴滴dddddd");
+                        handler.sendEmptyMessageDelayed(7, 350);
+                    } else {
+                        getShuJu(mB, mA);
+                        g = 0;
+                        d = 0;
+                        gg = 0.0f;
+                        dd = 0.0f;
+                        a = 0;
+                        b = 0;
+                        mA = 0;
+                        mB = 0;
                     }
                     break;
             }
@@ -205,8 +212,7 @@ public class ZiDongActivity extends BaseActivity {
         student.setName("自动测量");
         boolean b = myManager.addStudent(student);
         if (b) {
-            Toast.makeText(this, "插入数据成功", Toast.LENGTH_SHORT).show();
-            finish();
+            Toast.makeText(ZiDongActivity.this, "插入数据成功", Toast.LENGTH_SHORT).show();
         }
     }
 
@@ -243,23 +249,22 @@ public class ZiDongActivity extends BaseActivity {
                 booA[0] = false;
                 handler.sendEmptyMessageDelayed(1, 2000);
             }
-        }
-//
-////        /*测量结束并且数据有效*/ && split[6].equals("1")
+        } else
+            Toast.makeText(this, "测量结束", Toast.LENGTH_SHORT).show();
+//        /*测量结束并且数据有效*/ && split[6].equals("1")
         if (split[6].equals("1") && split[7].equals("0")) {
             Log.d("ZiDongActivity", "走了");
             String[] split1 = str.split(",");
             String s = split1[6];
-//            String s1 = s.substring(1, split1[6].length());
             mA = Integer.parseInt(s);
             mB = Integer.parseInt(split1[8]);
             mC = Integer.parseInt(split1[10]);
-            getShuJu(mB, mA);
             handler.removeCallbacksAndMessages(null);
             Log.d("ZiDongActivity", "移除");
-            LinkDetectedHandler.removeMessages(6);
             handler.sendEmptyMessage(7);
-        }
+            LinkDetectedHandler.removeMessages(6);
+        } else
+            Toast.makeText(this, "数据无效", Toast.LENGTH_SHORT).show();
 
 
         Log.d("ZiDongActivitya", sb.toString());
