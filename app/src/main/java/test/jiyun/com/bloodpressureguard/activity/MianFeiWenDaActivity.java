@@ -28,7 +28,6 @@ public class MianFeiWenDaActivity extends BaseActivity {
     ImageView backImg;
     @Bind(R.id.title_text)
     TextView titleText;
-
     @Override
     protected int layoutId() {
         return R.layout.free_questions;
