@@ -5,17 +5,27 @@
     android:background="#f6f1f1"
     android:orientation="vertical">
 
+
     <TextView
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         android:layout_above="@+id/mLa"
         android:background="#fff" />
 
+    <TextView
+        android:id="@+id/mXL"
+        android:layout_width="match_parent"
+        android:layout_height="50dp"
+        android:gravity="center"
+        android:text=""
+        android:textSize="20dp" />
+
     <LinearLayout
         android:id="@+id/mlab"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_above="@+id/mLaaa"
+        android:layout_below="@+id/mXL"
         android:background="#fff"
         android:orientation="vertical">
 
@@ -44,9 +54,10 @@
                         android:layout_width="60dp"
                         android:layout_height="wrap_content"
                         android:layout_gravity="center_horizontal"
-                        android:background="#febf04"
+                        android:background="#fff"
                         android:gravity="center"
-                        android:text="高压" />
+                        android:text="高压"
+                        android:textSize="18dp" />
 
                     <TextView
                         android:id="@+id/mGaoYa"
@@ -79,9 +90,10 @@
                         android:layout_height="wrap_content"
                         android:layout_above="@+id/mDiYa"
                         android:layout_gravity="center_horizontal"
-                        android:background="#f4d908"
+                        android:background="#fff"
                         android:gravity="center"
-                        android:text="低压" />
+                        android:text="低压"
+                        android:textSize="18dp" />
 
                     <TextView
                         android:id="@+id/mDiYa"
@@ -166,13 +178,13 @@
             android:orientation="vertical">
 
             <TextView
-                android:id="@+id/mOpenBluetooth"
+                android:id="@+id/btnOne"
                 android:layout_width="60dp"
                 android:layout_height="60dp"
                 android:layout_gravity="center"
                 android:background="@drawable/dian_ji_yuan"
                 android:gravity="center"
-                android:text="开启蓝牙" />
+                android:text="查找设备" />
         </LinearLayout>
 
         <LinearLayout
@@ -183,7 +195,7 @@
             android:orientation="vertical">
 
             <TextView
-                android:id="@+id/mStartCL"
+                android:id="@+id/btnTwo"
                 android:layout_width="60dp"
                 android:layout_height="60dp"
                 android:layout_gravity="center"

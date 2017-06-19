@@ -50,15 +50,13 @@
         <activity android:name=".activity.huan_num.Phone_Num" />
         <activity android:name=".activity.huan_num.YanZheng_Ma" />
         <activity android:name=".activity.ZiDongActivity" />
-
-
         <activity android:name=".activity.Collection_XiangQing" />
         <activity android:name=".activity.huan_num.BangDing_Activity" />
-
         <activity android:name=".activity.TabActivity" />
         <activity android:name=".activity.DiseaseActivity" />
         <activity android:name=".activity.YuyueActivity" />
         <activity android:name=".activity.TabTwoActivity" />
+        <activity android:name=".bluetooth.ClientActivity"/>
     </application>
 
 </manifest>

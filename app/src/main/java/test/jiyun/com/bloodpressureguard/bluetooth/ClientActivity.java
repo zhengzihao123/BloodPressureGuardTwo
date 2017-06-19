@@ -26,6 +26,9 @@ import java.util.Map;
 import java.util.Set;
 import java.util.UUID;
 
+import butterknife.Bind;
+import butterknife.ButterKnife;
+import butterknife.OnClick;
 import test.jiyun.com.bloodpressureguard.R;
 
 import static test.jiyun.com.bloodpressureguard.bluetooth.BluetoothMsg.bytes;
@@ -37,23 +40,23 @@ public class ClientActivity extends Activity {
     private Context mContext;
     private BluetoothAdapter mBluetoothAdapter; // Bluetooth适配器
     private BluetoothDevice device;             // 蓝牙设备
-    //    private ListView mListView;
-//    private ArrayList<ChatMessage> list;
-//    private ClientAdapter clientAdapter;        // ListView适配器
     private Button btnOne, btnTwo;
     private BluetoothSocket socket;     // 客户端socket
     private ClientThread mClientThread; // 客户端运行线程
     private Map<String, String> myInfo;
     private ProgressDialog progressDialog;
     private boolean first = true;
+    private int a;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.test_layout);
+        ButterKnife.bind(this);
 
         init();
     }
+
 
     // 变量初始化
     private void init() {
@@ -200,12 +203,13 @@ public class ClientActivity extends Activity {
                     Log.i("进来了", "handler" + msg.obj);
                     break;
                 case 6:
-                    Log.i("进来了", "handler");
+                    Log.i("ClientActivity", "handler");
                     sendMessageHandler(bytes1);
-                    LinkDetectedHandler.postDelayed(runnable, 250);
+                    LinkDetectedHandler.sendEmptyMessageDelayed(6, 250);
                     break;
                 case 7:
                     Toast.makeText(mContext, "设配配对成功，可以连接", Toast.LENGTH_SHORT).show();
+                    progressDialog.dismiss();
                     break;
             }
         }
@@ -224,13 +228,13 @@ public class ClientActivity extends Activity {
                     socket = device.createRfcommSocketToServiceRecord(UUID.fromString("00001101-0000-1000-8000-00805F9B34FB"));
                     // 通过socket连接服务器，这是一个阻塞过程，直到连接建立或者连接失效
                     socket.connect();
-//                  socket = (BluetoothSocket) device.getClass().getMethod("createRfcommSocket", new Class[]{int.class}).invoke(device, 3);
                     if (tag == 1)
                         LinkDetectedHandler.sendEmptyMessage(2);
                     else
                         LinkDetectedHandler.sendEmptyMessage(7);
                     // 可以开启读数据线程
-
+                    ReadThread r = new ReadThread();
+                    r.start();
                 } catch (IOException e) {
                     Log.e("error ", e.getMessage());
                     LinkDetectedHandler.sendEmptyMessage(3);
@@ -239,67 +243,43 @@ public class ClientActivity extends Activity {
         }
     }
 
-    // 通过socket获取InputStream流
-    private Runnable runnable = new Runnable() {
+
+    private class ReadThread extends Thread {
+        // 通过socket获取InputStream流
         @Override
         public void run() {
             byte[] buffer = new byte[1024];
-            int bytes = 0;
+            int bytes;
             InputStream is = null;
             try {
                 is = socket.getInputStream();
-                while ((bytes = is.read(buffer)) != -1) {
-                    StringBuffer sb = new StringBuffer();
-                    byte[] data = new byte[bytes];
-                    for (int i = 0; i < data.length; i++) {
-                        byte b = buffer[i];
-                        sb.append(b + ",");
-                    }
-                    Log.i("进来了", sb.toString());
-                    LinkDetectedHandler.obtainMessage(1, sb.toString()).sendToTarget();
-                }
             } catch (IOException e) {
-                // TODO Auto-generated catch block
                 e.printStackTrace();
-            } finally {
+            }
+            while (true) {
                 try {
-                    is.close();
+                    StringBuffer stringBuffer = new StringBuffer();
+                    if ((bytes = is.read(buffer)) > 0) {
+                        byte[] data = new byte[bytes];
+                        for (int i = 0; i < data.length; i++) {
+                            data[i] = buffer[i];
+                            Log.i("-----------====", data[i] + "");
+                            stringBuffer.append(buffer[i] + ",");
+                        }
+                        Log.d("ReadThread", stringBuffer.toString());
+
+                    }
                 } catch (IOException e) {
-                    e.printStackTrace();
+                    try {
+                        is.close();
+                    } catch (IOException e1) {
+                        e1.printStackTrace();
+                    }
+                    break;
                 }
             }
-
-//            while (true) {
-//                Log.i("进来了", "循环");
-//                try {
-//                    StringBuffer s = new StringBuffer();
-//                    if ((bytes = is.read(buffer)) > 0) {
-//                        byte[] data = new byte[bytes];
-//
-//                        for (int i = 0; i < data.length; i++) {
-//
-//                            byte b = buffer[i];
-//                            s.append(b + ",");
-//                        }
-//                        Log.i("进来了", s.toString());
-//                        LinkDetectedHandler.obtainMessage(1, s.toString()).sendToTarget();
-//                    }
-//                } catch (IOException e) {
-//                    // TODO Auto-generated catch block
-//                    try {
-//                        is.close();
-//                    } catch (IOException e1) {
-//                        // TODO Auto-generated catch block
-//                        e1.printStackTrace();
-//                    }
-//                    break;
-//                }
-//            }
-            LinkDetectedHandler.sendEmptyMessage(6);
-
-            LinkDetectedHandler.removeCallbacks(runnable);
         }
-    };
+    }
 
 
     // 发送数据
@@ -312,7 +292,6 @@ public class ClientActivity extends Activity {
             OutputStream os = socket.getOutputStream();
             os.write(bytes);
         } catch (IOException e) {
-            // TODO Auto-generated catch block
             e.printStackTrace();
         }
     }

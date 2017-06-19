@@ -31,6 +31,7 @@ import test.jiyun.com.bloodpressureguard.activity.XueYaJiLuActivity;
 import test.jiyun.com.bloodpressureguard.activity.XueYaZXActivity;
 import test.jiyun.com.bloodpressureguard.activity.ZiDongActivity;
 import test.jiyun.com.bloodpressureguard.base.BaseFragment;
+import test.jiyun.com.bloodpressureguard.bluetooth.ClientActivity;
 import test.jiyun.com.bloodpressureguard.sq.MyManager;
 import test.jiyun.com.bloodpressureguard.sq.Student;
 import test.jiyun.com.bloodpressureguard.view.MyStatisticsView;
@@ -312,7 +313,8 @@ public class BloodPressureFragment extends BaseFragment {
         mTextZD.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                Intent in = new Intent(getActivity(), ZiDongActivity.class);
+//                Intent in = new Intent(getActivity(), ClientActivity.class);
+                 Intent in = new Intent(getActivity(), ZiDongActivity.class);
                 getActivity().startActivity(in);
                 mPopup.dismiss();
             }
