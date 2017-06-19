@@ -304,6 +304,7 @@ public class BloodPressureFragment extends BaseFragment {
             public void onClick(View v) {
                 Intent in = new Intent(getActivity(), ShuJuJiLuActivity.class);
                 getActivity().startActivity(in);
+                mPopup.dismiss();
             }
         });
         mTextZD = (TextView) view.findViewById(R.id.mTextZD);
@@ -313,6 +314,7 @@ public class BloodPressureFragment extends BaseFragment {
             public void onClick(View v) {
                 Intent in = new Intent(getActivity(), ZiDongActivity.class);
                 getActivity().startActivity(in);
+                mPopup.dismiss();
             }
         });
         mRelativeLayout = (RelativeLayout) view.findViewById(R.id.mXiaoS);

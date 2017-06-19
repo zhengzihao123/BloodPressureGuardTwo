@@ -5,6 +5,14 @@
     android:background="#FBF9F5"
     android:orientation="vertical">
 
+    <include
+        android:id="@+id/message"
+        layout="@layout/people"
+        android:visibility="gone"
+        android:layout_width="match_parent"
+        android:layout_height="@dimen/y80">
+    </include>
+
     <TextView
         android:layout_width="match_parent"
         android:layout_height="wrap_content"

@@ -129,6 +129,7 @@ public class MyStatisticsView extends View {
         mHeight = getHeight();
 
         /*设置x轴和y轴之间的间距*/
+
         xSize = getWidth() / (xStr.length);
         ySize = getHeight() / (yStr.length);
         super.onLayout(changed, left, top, right, bottom);

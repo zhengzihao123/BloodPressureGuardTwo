@@ -51,7 +51,7 @@ public class LoginActivity extends BaseActivity {
     TextView register;
     @Bind(R.id.Login_Btn)
     Button LoginBtn;
-    private Boolean isLogin  = true;
+    private Boolean isLogin;
 
     @Override
     protected int layoutId() {
@@ -115,10 +115,11 @@ public class LoginActivity extends BaseActivity {
 ////
                         Login loginbean = (Login) obj;
                         if (loginbean.getState() == 200) {
-                            SharedPreferences.Editor edit = App.sharedPreferences.edit();
+                            final SharedPreferences.Editor edit = App.sharedPreferences.edit();
                             edit.putString(KeyUtils.USERID, loginbean.getUserid());
-                            edit.putBoolean(KeyUtils.ZhuangTai,isLogin);
-                            edit.putString(KeyUtils.PHONENUM,loginbean.getPhonenum());
+                            edit.putBoolean(KeyUtils.ZhuangTai, isLogin);
+                            edit.putString(KeyUtils.PHONENUM, loginbean.getPhonenum());
+
                             edit.commit();
                             Map<String, String> map1 = new HashMap();
                             map1.put("act", "kbb");
@@ -126,11 +127,13 @@ public class LoginActivity extends BaseActivity {
                             map1.put("type", "pullAccountInfo");
                             map1.put("tag", "wjk");
                             map1.put("userid", loginbean.getUserid());
-                            map1.put("sign","ee3dd4651821d3a45f4329a86d459cb7");
+                            map1.put("sign", "ee3dd4651821d3a45f4329a86d459cb7");
                             RetrofitUtil.getInstance().getRetrofit(HoastUtils.HOST, map1, new ResaultCallBack() {
                                 @Override
                                 public void onSuccess(Object obj) {
                                     MySet mySetBean = (MySet) obj;
+                                    edit.putString(KeyUtils.USERIMAGE, mySetBean.getAvatar());
+                                    edit.commit();
                                     UserBus userBus = new UserBus(mySetBean);
                                     EventBus.getDefault().postSticky(userBus);
                                     ToastUtils.showShortToast("登录成功");

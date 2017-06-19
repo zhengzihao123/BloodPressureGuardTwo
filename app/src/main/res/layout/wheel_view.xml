@@ -5,9 +5,9 @@
     android:orientation="vertical">
 
     <test.jiyun.com.bloodpressureguard.utils.WheelView
-       android:id="@+id/WheelView"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content">
-    </test.jiyun.com.bloodpressureguard.utils.WheelView>
+    android:id="@+id/WheelView"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content">
+</test.jiyun.com.bloodpressureguard.utils.WheelView>
 
 </LinearLayout>

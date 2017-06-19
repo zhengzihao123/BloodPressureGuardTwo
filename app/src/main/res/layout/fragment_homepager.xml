@@ -7,6 +7,8 @@
     android:orientation="vertical">
     <!--侧拉菜单-->
 
-    <include layout="@layout/personal_center_fragment"></include>
+    <include
+        android:id="@+id/cehua"
+        layout="@layout/personal_center_fragment"></include>
 
 </LinearLayout>
