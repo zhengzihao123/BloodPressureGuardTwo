@@ -6,6 +6,12 @@
     android:background="@color/color_all_bg"
     android:orientation="vertical">
 
+    <include
+        android:id="@+id/disease_title_bar"
+        layout="@layout/item_title_bar"
+        android:layout_width="match_parent"
+        android:layout_height="50dp" />
+
     <TextView
         android:layout_width="match_parent"
         android:layout_height="@dimen/y74"

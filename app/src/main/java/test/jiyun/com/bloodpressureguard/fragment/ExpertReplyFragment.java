@@ -38,7 +38,7 @@ public class ExpertReplyFragment extends BaseFragment {
 
     @Override
     protected int ViewID() {
-        return R.layout.search_result_listview;
+        return R.layout.expert_reply;
     }
 
     @Override

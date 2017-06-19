@@ -18,6 +18,7 @@ import java.util.ArrayList;
 import java.util.List;
 
 import butterknife.Bind;
+import butterknife.OnClick;
 import test.jiyun.com.bloodpressureguard.App;
 import test.jiyun.com.bloodpressureguard.R;
 import test.jiyun.com.bloodpressureguard.base.BaseActivity;
@@ -30,6 +31,10 @@ import test.jiyun.com.bloodpressureguard.view.MRecyclerView;
 public class QueryExpertActivity extends BaseActivity {
     @Bind(R.id.m_refresh_view)
     MRecyclerView mRefreshView;
+    @Bind(R.id.mFinsh)
+    ImageView mFinsh;
+    @Bind(R.id.mTitle)
+    TextView mTitle;
     private List<QueryExpertBean.DataBean> data;
     private int page, check;
     private DoctorOnline doctorOnline;
@@ -46,6 +51,7 @@ public class QueryExpertActivity extends BaseActivity {
 
     @Override
     protected void initView() {
+        mTitle.setText("全部14624位专家");
         doctorOnline = DoctorOnlineImpl.getInstance();
         page = 1;
         Intent intent = getIntent();
@@ -84,6 +90,11 @@ public class QueryExpertActivity extends BaseActivity {
         }
 
     };
+
+    @OnClick(R.id.mFinsh)
+    public void onViewClicked() {
+        finish();
+    }
 
     private class MyAdapter extends RecyclerView.Adapter<MyAdapter.ViewHolder> {
 

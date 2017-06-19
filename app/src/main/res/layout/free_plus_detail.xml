@@ -5,6 +5,12 @@
     android:background="#F9F9F9"
     android:orientation="vertical">
 
+    <include
+        android:id="@+id/free_title_bar"
+        layout="@layout/item_title_bar"
+        android:layout_width="match_parent"
+        android:layout_height="50dp" />
+
     <RelativeLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"

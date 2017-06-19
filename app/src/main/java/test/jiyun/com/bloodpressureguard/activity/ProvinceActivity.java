@@ -5,6 +5,7 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.AdapterView;
 import android.widget.BaseAdapter;
+import android.widget.ImageView;
 import android.widget.ListView;
 import android.widget.TextView;
 
@@ -12,6 +13,7 @@ import java.util.ArrayList;
 import java.util.List;
 
 import butterknife.Bind;
+import butterknife.OnClick;
 import test.jiyun.com.bloodpressureguard.App;
 import test.jiyun.com.bloodpressureguard.R;
 import test.jiyun.com.bloodpressureguard.base.BaseActivity;
@@ -23,6 +25,10 @@ import test.jiyun.com.bloodpressureguard.base.BaseActivity;
 public class ProvinceActivity extends BaseActivity {
     @Bind(R.id.province_list_view)
     ListView provinceListView;
+    @Bind(R.id.mFinsh)
+    ImageView mFinsh;
+    @Bind(R.id.mTitle)
+    TextView mTitle;
     private List<String> list;
 
     @Override
@@ -32,6 +38,7 @@ public class ProvinceActivity extends BaseActivity {
 
     @Override
     protected void initView() {
+        mTitle.setText("省份");
         list = new ArrayList<>();
         addList();
     }
@@ -87,6 +94,11 @@ public class ProvinceActivity extends BaseActivity {
         list.add("安徽省");
         list.add("江西省");
         list.add("福建省");
+    }
+
+    @OnClick(R.id.mFinsh)
+    public void onViewClicked() {
+        finish();
     }
 
     class MyAdapter extends BaseAdapter {

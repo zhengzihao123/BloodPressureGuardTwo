@@ -4,13 +4,6 @@
     android:layout_height="match_parent"
     android:orientation="vertical">
 
-    <include
-        android:id="@+id/query_title_bar"
-        layout="@layout/item_title_bar"
-        android:layout_width="match_parent"
-        android:layout_height="50dp" />
-
-
     <test.jiyun.com.bloodpressureguard.view.MRecyclerView
         android:id="@+id/m_refresh_view"
         android:layout_width="match_parent"
@@ -26,5 +19,4 @@
         android:textColor="#333333"
         android:textSize="@dimen/x34"
         android:visibility="gone" />
-
 </LinearLayout>

@@ -18,6 +18,7 @@ import java.util.ArrayList;
 import java.util.List;
 
 import butterknife.Bind;
+import butterknife.OnClick;
 import test.jiyun.com.bloodpressureguard.App;
 import test.jiyun.com.bloodpressureguard.R;
 import test.jiyun.com.bloodpressureguard.base.BaseActivity;
@@ -49,6 +50,10 @@ public class FreeplusActivity extends BaseActivity {
     TextView searchContentAll;
     @Bind(R.id.plus_listview)
     ListView plusListView;
+    @Bind(R.id.mFinsh)
+    ImageView mFinsh;
+    @Bind(R.id.mTitle)
+    TextView mTitle;
     private String expertId, doctorId;
     private DoctorOnline doctorOnline;
     private ProgressDialog progressDialog;
@@ -62,6 +67,7 @@ public class FreeplusActivity extends BaseActivity {
 
     @Override
     protected void initView() {
+        mTitle.setText("预约专家");
         expertId = getIntent().getStringExtra("expert_id");
         doctorId = getIntent().getStringExtra("id");
         doctorOnline = DoctorOnlineImpl.getInstance();
@@ -131,6 +137,11 @@ public class FreeplusActivity extends BaseActivity {
         progressDialog.setProgressStyle(ProgressDialog.STYLE_SPINNER);
         progressDialog.setMessage("正在加载中...");
         progressDialog.setCancelable(false);
+    }
+
+    @OnClick(R.id.mFinsh)
+    public void onViewClicked() {
+        finish();
     }
 
     class MyAdapter extends BaseAdapter {
