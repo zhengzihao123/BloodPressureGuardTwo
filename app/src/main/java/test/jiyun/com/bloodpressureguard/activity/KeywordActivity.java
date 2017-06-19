@@ -8,6 +8,7 @@ import android.view.ViewGroup;
 import android.widget.AdapterView;
 import android.widget.BaseAdapter;
 import android.widget.EditText;
+import android.widget.ImageView;
 import android.widget.ListView;
 import android.widget.TextView;
 
@@ -33,6 +34,10 @@ public class KeywordActivity extends BaseActivity {
     EditText keywordEt;
     @Bind(R.id.keyword_listview)
     ListView keywordListview;
+    @Bind(R.id.mFinsh)
+    ImageView mFinsh;
+    @Bind(R.id.mTitle)
+    TextView mTitle;
 
     private SharedPreferences sharedPreferences;
     private SharedPreferences.Editor editor;
@@ -45,6 +50,7 @@ public class KeywordActivity extends BaseActivity {
 
     @Override
     protected void initView() {
+        mTitle.setText("关键字");
         sharedPreferences = getSharedPreferences("keyword", MODE_PRIVATE);
         editor = sharedPreferences.edit();
         data = new ArrayList<>();
@@ -68,6 +74,12 @@ public class KeywordActivity extends BaseActivity {
             @Override
             public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
                 keywordEt.setText(data.get(position));
+            }
+        });
+        mFinsh.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                finish();
             }
         });
     }

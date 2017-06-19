@@ -1,8 +1,18 @@
 package test.jiyun.com.bloodpressureguard.fragment;
 
+import android.Manifest;
+import android.app.AlertDialog;
+import android.app.Dialog;
 import android.app.ProgressDialog;
+import android.content.DialogInterface;
 import android.content.Intent;
+import android.content.pm.PackageManager;
 import android.graphics.drawable.ColorDrawable;
+import android.net.Uri;
+import android.os.Build;
+import android.os.Handler;
+import android.os.Message;
+import android.support.v4.app.ActivityCompat;
 import android.text.TextUtils;
 import android.view.Gravity;
 import android.view.View;
@@ -28,6 +38,7 @@ import butterknife.OnClick;
 import test.jiyun.com.bloodpressureguard.App;
 import test.jiyun.com.bloodpressureguard.R;
 import test.jiyun.com.bloodpressureguard.activity.KeywordActivity;
+import test.jiyun.com.bloodpressureguard.activity.My_Message;
 import test.jiyun.com.bloodpressureguard.activity.ProvinceActivity;
 import test.jiyun.com.bloodpressureguard.activity.QueryExpertActivity;
 import test.jiyun.com.bloodpressureguard.activity.SearchItemDetail;
@@ -104,6 +115,8 @@ public class DoctorOnlineFragment extends BaseFragment {
     private RadioButton rankBottomOne;
     private String rankRecord;
     private Button buttonTwo;
+    private Dialog dialog;
+    private AlertDialog dialogOne;
 
     @Override
     protected int ViewID() {
@@ -116,6 +129,8 @@ public class DoctorOnlineFragment extends BaseFragment {
         show();
         showPopupOne();
         showPopupTwo();
+        createLocationDialog();
+        createPhotoDialog();
     }
 
     @Override
@@ -187,10 +202,60 @@ public class DoctorOnlineFragment extends BaseFragment {
         }, HotDoctorBean.class);
     }
 
+    private void createLocationDialog() {
+        dialog = new AlertDialog.Builder(App.activity)
+                .setTitle("定位")
+                .setMessage("是否开始定位")
+                .setPositiveButton("确定", new DialogInterface.OnClickListener() {
+                    @Override
+                    public void onClick(DialogInterface dialog, int which) {
+                        progressDialog.show();
+                        new Handler() {
+                            @Override
+                            public void handleMessage(Message msg) {
+                                super.handleMessage(msg);
+                                progressDialog.dismiss();
+                                onlineProvinceTv.setText("北京市");
+                            }
+                        }.sendEmptyMessageDelayed(1, 1500);
+                    }
+                }).setNegativeButton("取消", new DialogInterface.OnClickListener() {
+                    @Override
+                    public void onClick(DialogInterface dialog, int which) {
+                        dialog.dismiss();
+                    }
+                }).create();
+    }
+
+    private void createPhotoDialog() {
+        dialogOne = new AlertDialog.Builder(App.activity)
+                .setTitle("温馨提示")
+                .setMessage("您是否要拨打寻医问药的健康电话：400-9700-120？")
+                .setPositiveButton("确定", new DialogInterface.OnClickListener() {
+                    @Override
+                    public void onClick(DialogInterface dialog, int which) {
+                        if (Build.VERSION.SDK_INT > Build.VERSION_CODES.LOLLIPOP_MR1) {//Android 6.0以上版本需要获取权限
+                            requestPermissions(perms, PERMS_REQUEST_CODE);//请求权限
+                        } else {
+                            callPhone();
+                        }
+                    }
+                }).setNegativeButton("取消", new DialogInterface.OnClickListener() {
+                    @Override
+                    public void onClick(DialogInterface dialog, int which) {
+                        dialog.dismiss();
+                    }
+                }).create();
+    }
+
+    private String[] perms = {Manifest.permission.CALL_PHONE};
+    private final int PERMS_REQUEST_CODE = 200;
+
     @OnClick({R.id.online_location, R.id.online_province, R.id.online_doctor_title, R.id.online_hospital_rank, R.id.online_keyword, R.id.online_query, R.id.online_talk_doctor, R.id.online_doctor_phone, R.id.online_replace})
     public void onViewClicked(View view) {
         switch (view.getId()) {
             case R.id.online_location:
+                dialog.show();
                 break;
             case R.id.online_province:
                 Intent intent = new Intent(App.activity, ProvinceActivity.class);
@@ -232,68 +297,25 @@ public class DoctorOnlineFragment extends BaseFragment {
                 startActivity(intent4);
                 break;
             case R.id.online_talk_doctor:
+                Intent intent1 = new Intent(App.activity, My_Message.class);
+                startActivity(intent1);
                 break;
             case R.id.online_doctor_phone:
+                dialogOne.show();
                 break;
             case R.id.online_replace:
                 pageNum++;
                 loadList();
-//                doctorOnline.hotDoctor(pageNum, new ResaultCallBack() {
-//                    @Override
-//                    public void onSuccess(Object obj) {
-//                        progressDialog.dismiss();
-//                        HotDoctorBean hotDoctorBean = (HotDoctorBean) obj;
-//                        final List<HotDoctorBean.DataBean> data = hotDoctorBean.getData();
-//                        if (data.size() > 0) {
-//                            for (int i = 0; i < data.size(); i++) {
-//                                final int num = i;
-//                                RelativeLayout view = (RelativeLayout) onlineHotDoctorGroup.getChildAt(i);
-//                                TextView text = (TextView) view.getChildAt(0);
-//                                ImageView image = (ImageView) view.getChildAt(1);
-//                                text.setText(data.get(i).getName());
-//                                Glide.with(App.activity)
-//                                        .load(data.get(i).getApp_image())
-//                                        .diskCacheStrategy(DiskCacheStrategy.ALL)
-//                                        .into(image);
-//                                view.setOnClickListener(new View.OnClickListener() {
-//                                    @Override
-//                                    public void onClick(View v) {
-//                                        Intent intent = new Intent(App.activity, SearchItemDetail.class);
-//                                        intent.putExtra("imgUrl", data.get(num).getApp_image());
-//                                        intent.putExtra("name", data.get(num).getName());
-//                                        intent.putExtra("expert", data.get(num).getTeach());
-//                                        intent.putExtra("location", data.get(num).getHospital());
-//                                        intent.putExtra("type", data.get(num).getDepart());
-//                                        intent.putExtra("title", data.get(num).getTitle());
-//                                        intent.putExtra("expert_id", data.get(num).getExpert_id());
-//                                        intent.putExtra("doctor_id", data.get(num).getDocument_id());
-//                                        intent.putExtra("content", data.get(num).getGoodat());
-//                                        startActivity(intent);
-//                                    }
-//                                });
-//                            }
-//                        }
-//                    }
-//
-//                    @Override
-//                    public void onError(String errorMsg) {
-//                        progressDialog.dismiss();
-//                        showToast(errorMsg);
-//                    }
-//
-//                    @Override
-//                    public void notNet(String netData) {
-//                        progressDialog.dismiss();
-//                        showToast(netData);
-//                    }
-//
-//                    @Override
-//                    public void onErrorParams(String errorParams) {
-//                        progressDialog.dismiss();
-//                        showToast(errorParams);
-//                    }
-//                }, HotDoctorBean.class);
                 break;
+        }
+    }
+
+    private void callPhone() {
+        //检查拨打电话权限
+        if (ActivityCompat.checkSelfPermission(App.activity, Manifest.permission.CALL_PHONE) == PackageManager.PERMISSION_GRANTED) {
+            Intent intent = new Intent(Intent.ACTION_CALL);
+            intent.setData(Uri.parse("tel:" + "4009700120"));
+            startActivity(intent);
         }
     }
 
@@ -462,6 +484,18 @@ public class DoctorOnlineFragment extends BaseFragment {
         progressDialog.setProgressStyle(ProgressDialog.STYLE_SPINNER);
         progressDialog.setMessage("正在加载中...");
         progressDialog.setCancelable(false);
+    }
+
+    @Override
+    public void onRequestPermissionsResult(int permsRequestCode, String[] permissions, int[] grantResults) {
+        switch (permsRequestCode) {
+            case PERMS_REQUEST_CODE:
+                boolean storageAccepted = grantResults[0] == PackageManager.PERMISSION_GRANTED;
+                if (storageAccepted) {
+                    callPhone();
+                }
+                break;
+        }
     }
 
     @Override

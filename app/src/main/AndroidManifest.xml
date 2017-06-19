@@ -2,8 +2,8 @@
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
     package="test.jiyun.com.bloodpressureguard">
 
-    <uses-permission android:name="android.permission.BLUETOOTH"/>
-    <uses-permission android:name="android.permission.BLUETOOTH_ADMIN"/>
+    <uses-permission android:name="android.permission.BLUETOOTH" />
+    <uses-permission android:name="android.permission.BLUETOOTH_ADMIN" />
     <uses-permission android:name="android.permission.ACCESS_FINE_LOCATION" />
     <uses-permission android:name="android.permission.ACCESS_COARSE_LOCATION" />
     <uses-permission android:name="android.permission.WRITE_EXTERNAL_STORAGE" />
@@ -11,7 +11,7 @@
     <uses-permission android:name="android.permission.ACCESS_NETWORK_STATE" />
     <uses-permission android:name="android.permission.ACCESS_WIFI_STATE" />
     <uses-permission android:name="android.permission.READ_SMS" />
-
+    <uses-permission android:name="android.permission.CALL_PHONE" />
 
     <uses-permission android:name="android.permission.INTERNET" />
 
@@ -50,8 +50,7 @@
         <activity android:name=".activity.huan_num.Phone_Num" />
         <activity android:name=".activity.huan_num.YanZheng_Ma" />
         <activity android:name=".activity.ZiDongActivity" />
-
-
+        <activity android:name=".activity.MianFeiWenDaActivity" />
         <activity android:name=".activity.Collection_XiangQing" />
         <activity android:name=".activity.huan_num.BangDing_Activity" />
 

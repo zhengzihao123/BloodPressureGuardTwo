@@ -6,6 +6,7 @@ import android.view.Gravity;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.Button;
+import android.widget.ImageView;
 import android.widget.LinearLayout;
 import android.widget.PopupWindow;
 import android.widget.RelativeLayout;
@@ -44,6 +45,10 @@ public class DiseaseActivity extends BaseActivity {
     TextView diseaseTvThree;
     @Bind(R.id.disease_top)
     LinearLayout diseaseTop;
+    @Bind(R.id.mFinsh)
+    ImageView mFinsh;
+    @Bind(R.id.mTitle)
+    TextView mTitle;
     private PopupWindow popupWindow;
     private int index;
     private WheelView wheelView;
@@ -55,6 +60,7 @@ public class DiseaseActivity extends BaseActivity {
 
     @Override
     protected void initView() {
+        mTitle.setText("所患疾病");
         showPopup();
     }
 
@@ -68,7 +74,7 @@ public class DiseaseActivity extends BaseActivity {
 
     }
 
-    @OnClick({R.id.disease_one, R.id.disease_two, R.id.disease_three, R.id.disease_finish, R.id.disease_push})
+    @OnClick({R.id.disease_one, R.id.disease_two, R.id.disease_three, R.id.disease_finish, R.id.disease_push, R.id.mFinsh})
     public void onViewClicked(View view) {
         switch (view.getId()) {
             case R.id.disease_one:
@@ -88,6 +94,9 @@ public class DiseaseActivity extends BaseActivity {
                 break;
             case R.id.disease_push:
                 showToast("暂时不能上传");
+                break;
+            case R.id.mFinsh:
+                finish();
                 break;
         }
     }

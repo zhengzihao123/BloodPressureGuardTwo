@@ -10,8 +10,10 @@ import android.support.v4.view.ViewPager;
 import android.text.SpannableString;
 import android.text.Spanned;
 import android.text.TextUtils;
+import android.text.method.LinkMovementMethod;
 import android.text.style.ClickableSpan;
 import android.text.style.ForegroundColorSpan;
+import android.util.Log;
 import android.view.View;
 import android.widget.ImageView;
 import android.widget.TextView;
@@ -23,6 +25,7 @@ import java.util.ArrayList;
 import java.util.List;
 
 import butterknife.Bind;
+import butterknife.OnClick;
 import test.jiyun.com.bloodpressureguard.App;
 import test.jiyun.com.bloodpressureguard.R;
 import test.jiyun.com.bloodpressureguard.base.BaseActivity;
@@ -54,6 +57,10 @@ public class SearchItemDetail extends BaseActivity {
     TabLayout searchDetailTab;
     @Bind(R.id.search_detail_pager)
     ViewPager searchDetailPager;
+    @Bind(R.id.mFinsh)
+    ImageView mFinsh;
+    @Bind(R.id.mTitle)
+    TextView mTitle;
 
     private String imgUrl, name, expert, location, type, content, title, expertId, doctorId;
     private List<Fragment> fragments;
@@ -67,11 +74,13 @@ public class SearchItemDetail extends BaseActivity {
     protected void initView() {
         imgUrl = getIntent().getStringExtra("imgUrl");
         name = getIntent().getStringExtra("name");
+        mTitle.setText(name);
         expert = getIntent().getStringExtra("expert");
         location = getIntent().getStringExtra("location");
         type = getIntent().getStringExtra("type");
         title = getIntent().getStringExtra("title");
-        content = "基地阿基迪欧瑟吉欧爱睡觉迪欧撒娇地哦啊的是奇偶交接单四哦啊大祭司哦啊的叫点击扫地机斯奥";
+        content = getIntent().getStringExtra("content");
+        Log.i("content", content);
         expertId = getIntent().getStringExtra("expert_id");
         doctorId = getIntent().getStringExtra("doctor_id");
         fragments = new ArrayList<>();
@@ -104,22 +113,27 @@ public class SearchItemDetail extends BaseActivity {
         searchDetailExpert.setText(expert);
         searchDetailOffer.setText(title);
         String contentOne = "擅长：" + content;
-        final SpannableString spannableString1 = new SpannableString(contentOne);
+        Log.i("content", contentOne);
+        SpannableString spannableString1 = new SpannableString(contentOne);
         spannableString1.setSpan(new ForegroundColorSpan(Color.parseColor("#000000")), 0, 3, Spanned.SPAN_INCLUSIVE_EXCLUSIVE);
         if (contentOne.length() > 33) {
             contentOne = contentOne.substring(0, 33) + "...展开";
             SpannableString spannableString = new SpannableString(contentOne);
 //            spannableString.setSpan(new ForegroundColorSpan(Color.parseColor("#000000")), 0, 3, Spanned.SPAN_INCLUSIVE_EXCLUSIVE);
 //            spannableString.setSpan(new ForegroundColorSpan(Color.BLUE), contentOne.length() - 5, contentOne.length(), Spanned.SPAN_INCLUSIVE_EXCLUSIVE);
+            spannableString.setSpan(new ForegroundColorSpan(Color.parseColor("#000000")), 0, 3, Spanned.SPAN_INCLUSIVE_EXCLUSIVE);
             spannableString.setSpan(new ClickableSpan() {
                 @Override
                 public void onClick(View widget) {
                     searchDetailContent.setVisibility(View.GONE);
                     searchDetailContentAll.setVisibility(View.VISIBLE);
-                    searchDetailContentAll.setText(content);
+                    SpannableString spannableString2 = new SpannableString("擅长：" + content);
+                    spannableString2.setSpan(new ForegroundColorSpan(Color.parseColor("#000000")), 0, 3, Spanned.SPAN_INCLUSIVE_EXCLUSIVE);
+                    searchDetailContentAll.setText(spannableString2);
                 }
-            }, contentOne.length() - 2, contentOne.length(), Spanned.SPAN_INCLUSIVE_EXCLUSIVE);
-
+            }, spannableString.length() - 2, spannableString.length(), Spanned.SPAN_INCLUSIVE_EXCLUSIVE);
+            searchDetailContent.setText(spannableString);
+            searchDetailContent.setMovementMethod(LinkMovementMethod.getInstance());
         } else {
             searchDetailContent.setText(spannableString1);
         }
@@ -129,6 +143,12 @@ public class SearchItemDetail extends BaseActivity {
     @Override
     protected void listener() {
 
+    }
+
+
+    @OnClick(R.id.mFinsh)
+    public void onViewClicked() {
+        finish();
     }
 
 

@@ -8,6 +8,7 @@ import android.view.Gravity;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.EditText;
+import android.widget.ImageView;
 import android.widget.LinearLayout;
 import android.widget.PopupWindow;
 import android.widget.TextView;
@@ -18,6 +19,7 @@ import java.util.Set;
 import java.util.TreeSet;
 
 import butterknife.Bind;
+import butterknife.OnClick;
 import test.jiyun.com.bloodpressureguard.App;
 import test.jiyun.com.bloodpressureguard.R;
 import test.jiyun.com.bloodpressureguard.base.BaseActivity;
@@ -33,6 +35,10 @@ public class TabTwoActivity extends BaseActivity {
     FlowLayout TabLayout;
     @Bind(R.id.Tab_layout_top)
     LinearLayout TabLayoutTop;
+    @Bind(R.id.mFinsh)
+    ImageView mFinsh;
+    @Bind(R.id.mTitle)
+    TextView mTitle;
     private List<String> data;
     private View view;
     private PopupWindow popupWindow;
@@ -47,6 +53,7 @@ public class TabTwoActivity extends BaseActivity {
 
     @Override
     protected void initView() {
+        mTitle.setText("所患疾病");
         sharedPreferences = getSharedPreferences("tabList", MODE_PRIVATE);
         editor = sharedPreferences.edit();
         data = new ArrayList<>();
@@ -124,5 +131,10 @@ public class TabTwoActivity extends BaseActivity {
     @Override
     protected void listener() {
 
+    }
+
+    @OnClick(R.id.mFinsh)
+    public void onViewClicked() {
+        finish();
     }
 }

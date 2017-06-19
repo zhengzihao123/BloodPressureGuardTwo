@@ -8,10 +8,9 @@
     <include
         android:id="@+id/message"
         layout="@layout/people"
-        android:visibility="gone"
         android:layout_width="match_parent"
-        android:layout_height="@dimen/y80">
-    </include>
+        android:layout_height="@dimen/y80"
+        android:visibility="gone"></include>
 
     <TextView
         android:layout_width="match_parent"
@@ -42,6 +41,7 @@
         <EditText
             android:layout_width="match_parent"
             android:layout_height="match_parent"
+            android:background="@null"
             android:gravity="start"
             android:hint="请尽量详细描述，描述字数不得少于10个字。"
             android:maxLength="500"
@@ -154,6 +154,7 @@
             android:layout_width="0dp"
             android:layout_height="match_parent"
             android:layout_weight="1"
+            android:background="@null"
             android:gravity="center"
             android:hint="年龄"
             android:inputType="number"
